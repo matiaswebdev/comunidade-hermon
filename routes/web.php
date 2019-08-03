@@ -20,7 +20,7 @@ Route::middleware(['auth'])->group( function () {
 });
 
 Route::middleware(['auth'])->group( function () {
-	Route::get('/internos', 'UsuarioController@internos')->name('user.internos');
+	Route::get('/internos', 'InternosController@index')->name('internos');
 });
 
 

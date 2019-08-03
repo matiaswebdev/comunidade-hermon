@@ -247,9 +247,33 @@ input {
 
 
 .main-content .listagem {
-	margin-top: 2em;
+	margin-top: em;
 	width: 80%;
 	padding: .1em .3em;
-	background-color: gray;
+	background-color: ;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
 }
 
+.listagem-circle {
+	width: 45px;
+	height: 45px;
+	border-radius: 50%;
+	background-color: gray;
+	margin-right: 1em;
+}
+
+.main-content .listagem .dados {
+	width: 60%;
+	display: flex;
+	justify-content: space-between;
+}
+
+.main-content .listagem p{
+	margin-right: 1em;
+}
+
+.main-content .listagem span {
+	color: orange;
+}

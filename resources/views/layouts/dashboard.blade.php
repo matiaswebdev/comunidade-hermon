@@ -38,9 +38,9 @@
                             <li><a href="#">Novo</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Internos</a></li>
-                    <li><a href="#">Internos</a></li>
-                    <li><a href="#">Internos</a></li>
+                    <li><a href="#">Usuarios</a></li>
+                    <li><a href="#">Restriçao</a></li>
+                    <li><a href="#">Suporte</a></li>
                 </ul>
             </div>
         </section>
