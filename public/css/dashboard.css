@@ -20,7 +20,7 @@ body {
 	width: 16vw;
 	height: 100vh;
 	background-color: #191D29;
-	margin-left: 8vw;
+	margin-left: 4vw;
 	-webkit-box-shadow: -5px 0px 5px 0px rgba(0, 0, 0, 0.38);
 	-moz-box-shadow:    -5px 0px 5px 0px rgba(0, 0, 0, 0.38);
 	box-shadow:         -5px 0px 5px 0px rgba(0, 0, 0, 0.38);
@@ -100,7 +100,7 @@ body {
 
 /* Top Menu */
 .right {
-	width: 76vw;
+	width: 80vw;
 	min-height: 100vh;
 	background-color: #181C28;
 	display: flex;
