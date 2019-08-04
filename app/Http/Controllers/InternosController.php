@@ -22,7 +22,7 @@ class InternosController extends Controller
                           ->get()
         ];
 
-        return view('user.dashboard')->with('data', $data);
+        return view('internos.index')->with('data', $data);
     }
 
     /**
@@ -32,7 +32,12 @@ class InternosController extends Controller
      */
     public function create()
     {
-        //
+        $data = [
+            'username' => \Auth::user()->name,
+            'cargo' => 'Colaborador'
+        ];
+
+        return view('internos.create')->with('data', $data);
     }
 
     /**

@@ -11,21 +11,28 @@
 |
 */
 
+
+// Login routes
+Auth::routes();
+//Route::get('/home', 'HomeController@index')->name('home');
+
+// Página inicial pública
 Route::get('/', function () {
     return view('welcome');
 });
 
+// Rota para a área de trabalho
 Route::middleware(['auth'])->group( function () {
 	Route::get('/dashboard', 'UsuarioController@dashboard')->name('user.dashboard');
 });
 
+
+// Rotas para adiministração de registros
 Route::middleware(['auth'])->group( function () {
 	Route::get('/internos', 'InternosController@index')->name('internos');
+	Route::get('/internos/create', 'InternosController@create')->name('create.internos');
 });
 
 
 
 
-// Login routes
-Auth::routes();
-Route::get('/home', 'HomeController@index')->name('home');
