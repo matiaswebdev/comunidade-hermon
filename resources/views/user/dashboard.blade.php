@@ -1,5 +1,5 @@
 @extends('layouts.dashboard')
 
 @section('content')
-	internos.create
+	Seja bem vindo {{ $data['username']}}.
 @endsection
