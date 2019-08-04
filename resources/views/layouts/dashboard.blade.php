@@ -32,9 +32,9 @@
 
             <div class="menu-links">
                 <ul>
-                    <li class="selected"><a href="/internos">Internos</a>
+                    <li class="selected"><a href="/internos/index">Internos</a>
                         <ul>
-                            <li><a href="/internos">Procurar</a></li>
+                            <li><a href="/internos/index">Procurar</a></li>
                             <li><a href="/internos/create">Novo</a></li>
                         </ul>
                     </li>

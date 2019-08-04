@@ -29,8 +29,11 @@ Route::middleware(['auth'])->group( function () {
 
 // Rotas para adiministração de registros
 Route::middleware(['auth'])->group( function () {
-	Route::get('/internos', 'InternosController@index')->name('internos');
-	Route::get('/internos/create', 'InternosController@create')->name('create.internos');
+	
+		Route::get('/internos/index', 'InternosController@index')->name('internos.index');
+		Route::get('/internos/create', 'InternosController@create')->name('internos.create');
+	
+	
 });
 
 

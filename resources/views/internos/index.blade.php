@@ -4,7 +4,7 @@
 	<div class="content">
 		<h2>Lista de Internos</h2>
 		<div class="busca">
-			<form id="logout-form" action="{{ route('internos') }}" method="GET">
+			<form id="logout-form" action="{{ route('internos.index') }}" method="GET">
                @csrf
 				  <div class="webflow-style-input">
 				    <input name="busca" type="text" placeholder="Buscar internos"></input>
