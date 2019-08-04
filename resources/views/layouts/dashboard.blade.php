@@ -26,7 +26,7 @@
     <div class="left">
         <section class="menu">
             <div class="profile-picture"></div>
-            <p>{{ $data['username'] }}</p>
+            <p class="username">{{ $data['username'] }}</p>
             <p class="cargo">{{ $data['cargo']}}</p>
             <hr>
 
@@ -38,20 +38,25 @@
                             <li><a href="#">Novo</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Usuarios</a></li>
-                    <li><a href="#">Restriçao</a></li>
+                    <li><a href="#">Usuários</a></li>
+                    <li><a href="#">Restrições</a></li>
+                    <li><a href="#">Relatório</a></li>
                     <li><a href="#">Suporte</a></li>
                 </ul>
             </div>
         </section>
     </div>
     <div class="right">
+
+
         <section class="top-menu">
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="">
                 @csrf
                 <button type="submit" name="submit">Logout</button>
             </form>
         </section>
+
+
         <section class="main-content">
             @yield('content')
         </section>

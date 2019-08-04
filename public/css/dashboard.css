@@ -32,6 +32,11 @@ body {
 	color: white;
 }
 
+.menu .username {
+	text-align: center;
+	padding-bottom: .5em;
+}
+
 .profile-picture {
 	width: 100px;
 	height: 100px;
