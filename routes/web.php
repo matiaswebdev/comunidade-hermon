@@ -32,6 +32,7 @@ Route::middleware(['auth'])->group( function () {
 	
 		Route::get('/internos/index', 'InternosController@index')->name('internos.index');
 		Route::get('/internos/create', 'InternosController@create')->name('internos.create');
+		Route::post('/internos/create', 'InternosController@store')->name('internos.store');
 	
 	
 });

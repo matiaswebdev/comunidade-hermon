@@ -2,50 +2,51 @@
 
 @section('content')
 	<div class="create-content">
-		<form class="my-form">
+		<form class="my-form" method="POST" action="/internos/create">
+			@csrf
 		   <div class="container">
 		    	<h1>Registrar Interno</h1>
 			    <ul>
 			          <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="num_vaga">vaga</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" disabled>
+				      	  	<label for="num_vaga">Vaga</label>	      		
+						  	<input id="num_vaga" type="text" value="0001" name="num_vaga" required>
 				      	  </div>
 						</div>
 						<div class="grid grid-1">
 						  <div>
-				      	  	<label for="num_vaga">Nome</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" required>
+				      	  	<label for="nome">Nome</label>			      		
+						  	<input id="num_vaga" type="nome" name="nome" value="" required>
 				      	  </div>
 						</div>
 						<div class="grid grid-2">
 						  <div>
-				      	  	<label for="num_vaga">D. Entrada</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" required>
+				      	  	<label for="data_entrada">D. Entrada</label>			      		
+						  	<input id="data_entrada" type="text" value="" name="data_entrada" required>
 				      	  </div>
 				      	  <div>
-				      	  	<label for="num_vaga">D. Saida</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="">
+				      	  	<label for="data_saida">D. Saida</label>			      		
+						  	<input id="data_saida" type="text" name="data_saida" value="">
 				      	  </div>
 						</div>
 						<div class="grid grid-1">
 						  <div>
-				      	  	<label for="num_vaga">Motivo da saida</label>		      		
-						  	<input id="num_vaga" type="text" placeholder="">
+				      	  	<label for="motivo_saida">Motivo da saida</label>		      		
+						  	<input id="motivo_saida" name="motivo_saida" type="text" value="">
 				      	  </div>
 						</div>
 				      </li> 
 				      <li>
 				      	<div class="grid grid-1">
 					      	<div>
-					      		<label for="num_vaga">Procedencia</label>
-						      	<select>
+					      		<label for="procedencia">Procedencia</label>
+						      	<select id="procedencia" name="procedencia">
 								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option>FAS</option>
-								  <option>CREAS</option>
-								  <option>SOCIAL</option>
-								  <option>FAMILIA</option>      
+								  <option value="fas">FAS</option>
+								  <option value="creas">CREAS</option>
+								  <option value="social">SOCIAL</option>
+								  <option value="familia">FAMILIA</option>    
 								</select>
 							</div>
 						</div>
@@ -53,59 +54,59 @@
 				      <li>
 				      	<div class="grid grid-2">
 				      	  <div>
-				      	  	<label for="num_vaga">Nascimento</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="nascimento">Nascimento</label>			      		
+						  	<input id="nascimento" type="text" name="nascimento" value="" >
 				      	  </div>
 				      	  <div>
-				      	  	<label for="num_vaga">Naturalidade</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
-				      	  </div>
-						</div>
-				      </li> 
-				      <li>
-				      	<div class="grid grid-2">
-				      	  <div>
-				      	  	<label for="num_vaga">Rg</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
-				      	  </div>
-				      	  <div>
-				      	  	<label for="num_vaga">Cpf</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="naturalidade">Naturalidade</label>			      		
+						  	<input id="naturalidade" type="text" name="naturalidade" value="" >
 				      	  </div>
 						</div>
 				      </li> 
 				      <li>
 				      	<div class="grid grid-2">
 				      	  <div>
-				      	  	<label for="num_vaga">Pai</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="rg">Rg</label>			      		
+						  	<input id="rg" type="text" name="rg" value="" >
 				      	  </div>
 				      	  <div>
-				      	  	<label for="num_vaga">Mae</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="cpf">Cpf</label>			      		
+						  	<input id="cpf" type="text" name="cpf" value="" >
+				      	  </div>
+						</div>
+				      </li> 
+				      <li>
+				      	<div class="grid grid-2">
+				      	  <div>
+				      	  	<label for="nome_pai">Pai</label>			      		
+						  	<input id="nome_pai" type="text" name="nome_pai" value="" >
+				      	  </div>
+				      	  <div>
+				      	  	<label for="nome_mae">Mae</label>			      		
+						  	<input id="nome_mae" type="text" name="nome_mae" value="" >
 				      	  </div>
 						</div>
 				      </li>
 				      <li>
 				      	<div class="grid grid-2">
 					      	<div>
-					      		<label for="num_vaga">Estado civil</label>
-						      	<select>
+					      		<label for="estado_civil">Estado civil</label>
+						      	<select id="estado_civil" name="estado_civil">
 								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option>CASADO</option>
-								  <option>SOLTEIRO</option>
-								  <option>DIVORCIADO</option>
-								  <option>OUTROS</option>      
+								  <option value="casado">CASADO</option>
+								  <option value="solteiro">SOLTEIRO</option>
+								  <option value="divorciado">DIVORCIADO</option>
+								  <option value="outros">OUTROS</option>      
 								</select>
 							</div>
 							<div>
-					      		<label for="num_vaga">Grau de Instruçao</label>
-						      	<select>
+					      		<label for="grau_instrucao">Grau de Instruçao</label>
+						      	<select id="grau_instrucao" name="grau_instrucao">
 								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option>BASICO</option>
-								  <option>FUNDAMENTAL</option>
-								  <option>MEDIO</option>
-								  <option>SUPERIOR</option>      
+								  <option value="basico">BASICO</option>
+								  <option value="fundamental">FUNDAMENTAL</option>
+								  <option value="medio">MEDIO</option>
+								  <option value="superior">SUPERIOR</option>      
 								</select>
 							</div>
 						</div>	
@@ -113,62 +114,62 @@
 					  <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="num_vaga">Pendencia Judicial</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="pendencia_judicial">Pendencia Judicial</label>
+						  	<input id="pendencia_judicial" type="text" name="pendencia_judicial" value="" >
 				      	  </div>
 						</div>
 				      </li> 
 				      <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="num_vaga">Motivo Acolhimento</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="motivo_acolhimento">Motivo Acolhimento</label>	
+						  	<input id="motivo_acolhimento" type="text" name="motivo_acolhimento" value="" >
 				      	  </div>
 						</div>
 				      </li> 
 				      <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="num_vaga">Tratamento medico - Remedios</label>
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="tratamento_medico">Tratamento medico - Remedios</label>
+						  	<input id="tratamento_medico" type="text" name="tratamento_medico" value="" >
 				      	  </div>
 						</div>
 				      </li>
 				       <li>
 				      	<div class="grid grid-2">
 				      	  <div>
-				      	  	<label for="num_vaga">Profissao</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="profissao">Profissao</label>			      		
+						  	<input id="profissao" type="text" name="profissao" value="" >
 				      	  </div>
 				      	  <div>
-				      	  	<label for="num_vaga">Internamento anterior</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="internamento_anterior">Internamento anterior</label>
+						  	<input id="internamento_anterior" type="text" name="internamento_anterior" value="" >
 				      	  </div>
 						</div>
 				      </li>
 				      <li>
 				      	<div class="grid grid-1">
 				      	  <div class="document-selectors fancy">
-				      	  	<label for="rg">RG</label>
-				      	  	<input type="checkbox" id="rg">
+				      	  	<label for="docs_rg">RG</label>
+				      	  	<input type="checkbox" name="docs_rg" id="docs_rg">
 
-				      	  	<label for="cpf">CPF</label>
-				      	  	<input type="checkbox" id="cpf">
+				      	  	<label for="docs_cpf">CPF</label>
+				      	  	<input type="checkbox" name="docs_cpf" id="docs_cpf">
 
-				      	  	<label for="titulo">TITULO</label>
-				      	  	<input type="checkbox" id="titulo">
+				      	  	<label for="docs_titulo">TITULO</label>
+				      	  	<input type="checkbox" name="docs_titulo" id="docs_titulo">
 
-				      	  	<label for="cnh">CNH</label>
-				      	  	<input type="checkbox" id="cnh">
+				      	  	<label for="docs_cnh">CNH</label>
+				      	  	<input type="checkbox" name="docs_cnh" id="docs_cnh">
 
-				      	  	<label for="ctps">CTPS</label>
-				      	  	<input type="checkbox" id="ctps">
+				      	  	<label for="docs_ctps">CTPS</label>
+				      	  	<input type="checkbox" name="docs_ctps" id="docs_ctps">
 
-				      	  	<label for="reservista">RESERVISTA</label>
-				      	  	<input type="checkbox" id="reservista">
+				      	  	<label for="docs_reservista">RESERVISTA</label>
+				      	  	<input type="checkbox" name="docs_reservista" id="docs_reservista">
 
-				      	  	<label for="c_nascimento">CERT. NASCIMENTO</label>
-				      	  	<input type="checkbox" id="c_nascimento">
+				      	  	<label for="docs_c_nascimento">CERT. NASCIMENTO</label>
+				      	  	<input type="checkbox" name="docs_c_nascimento" id="docs_c_nascimento">
 
 
 				      	  </div>  		
@@ -177,21 +178,21 @@
 				      <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="num_vaga">Contato</label>
-						  	<input id="num_vaga" type="text" placeholder="" >
+				      	  	<label for="contato">Contato</label>
+						  	<input id="contato" type="text" name="contato" value="" >
 				      	  </div>
 						</div>
 				      </li>
 				      <li>
 				      	<div class="grid grid-1">
 					      	<div>
-					      		<label for="num_vaga">Beneficios</label>
-						      	<select>
+					      		<label for="beneficios">Beneficios</label>
+						      	<select id="beneficios" name="beneficios">
 								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option>B.F</option>
-								  <option>AUX. DOENCA</option>
-								  <option>APOSENTADORIA</option>
-								  <option>OUTROS</option>      
+								  <option value="bf">B.F</option>
+								  <option value="aux_doenca">AUX. DOENCA</option>
+								  <option value="aposentadoria">APOSENTADORIA</option>
+								  <option value="outros">OUTROS</option>      
 								</select>
 							</div>
 						</div>
@@ -199,8 +200,8 @@
 				      <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="num_vaga">Atendente</label>			      		
-						  	<input id="num_vaga" type="text" placeholder="{{$data['username']}}" disabled>
+				      	  	<label for="atendente">Atendente</label>			      		
+						  	<input id="atendente" type="text" name="atendente" value="{{$data['username']}}">
 				      	  </div>
 						</div>
 				      </li>    
