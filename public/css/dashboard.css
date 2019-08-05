@@ -106,7 +106,7 @@ body {
 /* Top Menu */
 .right {
 	width: 80vw;
-	min-height: 100vh;
+	height: 2000px;
 	background-color: #181C28;
 	display: flex;
 	flex-direction: column;
@@ -161,7 +161,7 @@ body {
 
 /* User search */
 
-input {
+.webflow-style-input input {
   border-style: none;
   background: transparent;
   outline: none;
@@ -281,4 +281,304 @@ input {
 
 .main-content .listagem span {
 	color: orange;
+}
+
+
+
+
+
+
+/*
+*
+*
+*  ESTILO DA TELA DE REGISTRO DE INTERNOS
+*
+*
+*/
+
+
+
+:root {
+  --white: #afafaf;
+  --red: #e31b23;
+  --bodyColor: #292a2b;
+  --borderFormEls: rgba(0,0,0,0);
+  --bgFormEls: #070B17;
+  --bgFormElsFocus: #2121ED;
+}
+
+.create-content a {
+  color: inherit;
+}
+ 
+.create-content input,
+.create-content select,
+.create-content textarea,
+.create-content button {
+  font-family: inherit;
+  font-size: 100%;
+  margin-top:2px;
+}
+ 
+.create-content button,
+.create-content label {
+  cursor: pointer;
+}
+ 
+.create-content select {
+  appearance: none;
+}
+ 
+ .create-content select::-ms-expand {
+  display: none;
+}
+ 
+.create-content select:-moz-focusring {
+  color: transparent !important;
+  text-shadow: 0 0 0 var(--white);
+}
+ 
+.create-content textarea {
+  resize: none;
+}
+ 
+.create-content ul {
+  list-style: none;
+}
+
+
+@media screen and (min-width: 600px) {
+  .create-content form {
+	width: 100%;
+  }
+  .my-form .grid {
+    display: grid;
+    grid-gap: 1.5rem;
+    margin: .5em 0 1em 0;
+  }
+
+  .my-form .grid label {
+  	display: block;
+  	margin-bottom: .5em;
+  }
+   
+  .my-form .grid-2 {
+    grid-template-columns: 1fr 1fr;   
+  }
+ 
+  .my-form .grid-3 {
+    grid-template-columns: auto auto auto;
+    align-items: center;
+  }
+}
+
+.create-content form {
+	width: 90%;
+}
+
+.create-content form ul {
+	margin:0;
+	padding: 0;
+}
+
+
+
+.my-form select,
+.my-form input,
+.my-form textarea,
+.my-form button {
+  width: 100%;
+  line-height: 1.5;
+  padding: 15px 10px;
+  border: 1px solid var(--borderFormEls);
+  color: var(--white);
+  background: var(--bgFormEls);
+  transition: background-color 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25),
+    transform 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+ 
+.my-form textarea {
+  height: 170px;
+}
+ 
+.my-form ::placeholder {
+  color: inherit;
+  opacity: 1;
+}
+
+
+
+ 
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus,
+.my-form button:focus {
+  background: var(--bgFormElsFocus);
+}
+ 
+.my-form select:focus,
+.my-form input:focus,
+.my-form textarea:focus {
+  transform: scale(1.02);
+}
+
+
+
+.my-form *:required,
+.my-form select {
+  background-repeat: no-repeat;
+  background-position: center right 12px;
+  background-size: 15px 15px;
+}
+ 
+.my-form *:required {
+  background-image: url(../images/asterisk.svg);  
+}
+ 
+.my-form select {
+  -moz-appearance: none;
+  /* for Chrome */
+  -webkit-appearance: none;
+  background-image: url(../images/down.svg);
+}
+
+.my-form select::-ms-expand {
+    display: none !important;
+}
+
+
+
+.my-form .btn-grid {
+  position: relative;
+  overflow: hidden;
+  transition: filter 0.2s;
+}
+ 
+.my-form button:enabled:hover,
+.my-form button:focus {
+  background: var(--bgFormElsFocus);
+}
+ 
+.my-form button > * {
+  display: inline-block;
+  width: 100%;
+  transition: transform 0.4s ease-in-out;
+}
+ 
+.my-form button .back {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-110%, -50%);
+}
+ 
+.my-form button:enabled:hover .back,
+.my-form button:focus .back {
+  transform: translate(-50%, -50%);
+}
+ 
+.my-form button:enabled:hover .front,
+.my-form button:focus .front {
+  transform: translateX(110%);
+}
+
+
+.my-form .terms input[type="checkbox"] {
+  position: absolute;
+  left: -9999px;
+}
+
+
+
+.my-form .terms input[type="checkbox"] + label {
+  position: relative;
+  display: inline-block;
+  padding-left: 2rem;
+  transition: background 0.3s cubic-bezier(0.57, 0.21, 0.69, 1.25);
+}
+ 
+.my-form .terms input[type="checkbox"]:focus + label {
+  background: var(--bgFormElsFocus);
+}
+ 
+.my-form .terms input[type="checkbox"] + label::before,
+.my-form .terms input[type="checkbox"] + label::after {
+  content: '';
+  position: absolute;
+}
+ 
+.my-form .terms input[type="checkbox"] + label::before {
+  left: 0;
+  top: 6px;
+  width: 18px;
+  height: 18px;
+  border: 2px solid var(--white);
+}
+ 
+.my-form .terms input[type="checkbox"]:checked + label::before {
+
+}
+ 
+.my-form .terms input[type="checkbox"]:checked + label::after {
+  left: 7px;
+  top: 7px;
+  width: 6px;
+  height: 14px;
+  border-bottom: 2px solid var(--white);
+  border-right: 2px solid var(--white);
+  transform: rotate(45deg);
+}
+ 
+@media screen and (min-width: 541px) {
+  .my-form .terms input[type="checkbox"] + label::before {
+    top: 50%;
+    transform: translateY(-50%);
+  }
+   
+  .my-form .terms input[type="checkbox"]:checked + label::after {
+    top: 3px;
+  }
+}
+
+
+.my-form .btn-grid:disabled {
+  cursor: default;
+  filter: blur(1px);
+}
+
+.my-form .terms {
+	padding: 1em 0;
+}
+
+.my-form .required-msg {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.my-form .required-msg div{
+	width: 15px;
+	height: 15px;
+	margin-left: .5em;
+	background-image: url(../images/asterisk.svg);
+}
+
+
+.document-selectors {
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	font-size: .7em;
+	padding: 2em 0;
+}
+
+.document-selectors label {
+	display: block;
+	width: auto;
+	margin-right: -28px;
+}
+
+.document-selectors input {
+	display: block;
+	width: auto;
 }
