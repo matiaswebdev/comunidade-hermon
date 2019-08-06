@@ -310,6 +310,17 @@ body {
   --bgFormElsFocus: #2121ED;
 }
 
+.top-erro-message {
+  width:100%;
+  margin-left: 1em;
+  border-left: 8px solid #A92D2D;
+  background-color: #101010;
+}
+
+.top-erro-message p {
+  padding: 1em;
+}
+
 .create-content a {
   color: inherit;
 }

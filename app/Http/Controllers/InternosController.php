@@ -15,15 +15,27 @@ class InternosController extends Controller
      */
     public function index(Request $request)
     {
-        $data = [
+        // Busca de internos com parametros.
+        $internos = Internos::where('nome', 'like', '%'.$request['busca'].'%')->orderby('nome')->get();
+
+        // Transforma datas de 0000-00-00 para 00/00/0000
+        function date_transform($val) {
+            return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
+        }
+
+        // transforma todas as datas dos registros em formato 00/00/0000
+        foreach ($internos as $interno) {
+            $interno->data_entrada = date_transform($interno->data_entrada);
+            $interno->data_saida = date_transform($interno->data_saida);
+            $interno->nascimento = date_transform($interno->nascimento);
+        }
+
+        // retorna a view index do modulo internos com dados do usuario e interno
+        return view('internos.index')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
-            'internos' => Internos::where('nome', 'like', '%'.$request['busca'].'%')
-                          ->orderby('nome')
-                          ->get()
-        ];
-
-        return view('internos.index')->with('data', $data);
+            'internos' => $internos
+        ]);
     }
 
     /**

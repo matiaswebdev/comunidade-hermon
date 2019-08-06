@@ -2,6 +2,12 @@
 
 @section('content')
 	<div class="create-content">
+		
+			@if (!empty($errors->all()))
+			<div class="top-erro-message">
+				<p>Existem erros no preenchimento por favor corriga os campos em vermelho. </p>
+			</div>
+			@endif
 		<form class="my-form" method="POST" action="/internos/create">
 			@csrf
 		   <div class="container">
@@ -28,7 +34,7 @@
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="data_entrada">D. Entrada</label>			      		
-						  	<input id="data_entrada" type="text" maxlength="10" onkeypress="mascaraData(this)" value="{{old('data_entrada')}}" name="data_entrada" required>
+						  	<input id="data_entrada" type="text" maxlength="10" ondblclick="data_atual(this)" value="{{old('data_entrada')}}" name="data_entrada" required>
 						  	@if ($errors->first('data_entrada'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_entrada')}}
@@ -60,15 +66,39 @@
 						</div>
 				      </li> 
 				      <li>
-				      	<div class="grid grid-1">
+				      	<div class="grid grid-1"> 
+				      		<?php 
+				      			$none=''; $fas=''; $creas=''; $social=''; $familia='';
+				      			if(old('procedencia')){
+				      				switch (old('procedencia')) {
+				      					case '':
+				      						$none = 'selected';
+				      						break;
+				      					case 'fas':
+				      						$fas = 'selected';
+				      						break;
+				      					case 'creas':
+				      						$creas = 'selected';
+				      						break;
+				      					case 'social':
+				      						$social = 'selected';
+				      						break;
+				      					case 'familia':
+				      						$familia = 'selected';
+				      						break;
+				      				}
+				      			}else {
+				      				$none = 'selected';
+				      			}
+				      		 ?>
 					      	<div>
 					      		<label for="procedencia">Procedencia</label>
 						      	<select id="procedencia" name="procedencia">
-								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option value="fas">FAS</option>
-								  <option value="creas">CREAS</option>
-								  <option value="social">SOCIAL</option>
-								  <option value="familia">FAMILIA</option>    
+								  <option {{$none}}    disabled>-- Escolha uma opçao --</option>
+								  <option {{$fas}}     value="fas">FAS</option>
+								  <option {{$creas}}   value="creas">CREAS</option>
+								  <option {{$social}}  value="social">SOCIAL</option>
+								  <option {{$familia}} value="familia">FAMILIA</option> 
 								</select>
 								@if ($errors->first('procedencia'))
 				      	  		<div class="error-msg">
@@ -146,14 +176,38 @@
 				      </li>
 				      <li>
 				      	<div class="grid grid-2">
+				      		<?php 
+				      			$none=''; $casado=''; $solteiro=''; $divorciado=''; $outros='';
+				      			if(old('estado_civil')){
+				      				switch (old('estado_civil')) {
+				      					case '':
+				      						$none = 'selected';
+				      						break;
+				      					case 'casado':
+				      						$casado = 'selected';
+				      						break;
+				      					case 'solteiro':
+				      						$solteiro = 'selected';
+				      						break;
+				      					case 'divorciado':
+				      						$divorciado = 'selected';
+				      						break;
+				      					case 'outros':
+				      						$outros = 'selected';
+				      						break;
+				      				}
+				      			}else {
+				      				$none = 'selected';
+				      			}
+				      		 ?>
 					      	<div>
 					      		<label for="estado_civil">Estado civil</label>
 						      	<select id="estado_civil" name="estado_civil">
-								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option value="casado">CASADO</option>
-								  <option value="solteiro">SOLTEIRO</option>
-								  <option value="divorciado">DIVORCIADO</option>
-								  <option value="outros">OUTROS</option>      
+								  <option {{$none}} disabled>-- Escolha uma opçao--</option>
+								  <option {{$casado}} value="casado">CASADO</option>
+								  <option {{$solteiro}} value="solteiro">SOLTEIRO</option>
+								  <option {{$divorciado}} value="divorciado">DIVORCIADO</option>
+								  <option {{$outros}} value="outros">OUTROS</option>      
 								</select>
 								@if ($errors->first('estado_civil'))
 				      	  		<div class="error-msg">
@@ -162,13 +216,37 @@
 								@endif
 							</div>
 							<div>
+								<?php 
+				      			$none=''; $basico=''; $fundamental=''; $medio=''; $superior='';
+				      			if(old('grau_instrucao')){
+				      				switch (old('grau_instrucao')) {
+				      					case '':
+				      						$none = 'selected';
+				      						break;
+				      					case 'basico':
+				      						$basico = 'selected';
+				      						break;
+				      					case 'fundamental':
+				      						$fundamental = 'selected';
+				      						break;
+				      					case 'medio':
+				      						$medio = 'selected';
+				      						break;
+				      					case 'superior':
+				      						$superior = 'selected';
+				      						break;
+				      				}
+				      			}else {
+				      				$none = 'selected';
+				      			}
+				      		 ?>
 					      		<label for="grau_instrucao">Grau de Instruçao</label>
 						      	<select id="grau_instrucao" name="grau_instrucao">
-								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option value="basico">BASICO</option>
-								  <option value="fundamental">FUNDAMENTAL</option>
-								  <option value="medio">MEDIO</option>
-								  <option value="superior">SUPERIOR</option>      
+								  <option {{$none}} disabled>-- Escolha uma opçao--</option>
+								  <option {{$basico}} value="basico">BASICO</option>
+								  <option {{$fundamental}} value="fundamental">FUNDAMENTAL</option>
+								  <option {{$medio}} value="medio">MEDIO</option>
+								  <option {{$superior}} value="superior">SUPERIOR</option>      
 								</select>
 								@if ($errors->first('grau_instrucao'))
 				      	  		<div class="error-msg">
@@ -252,14 +330,38 @@
 				      </li>
 				      <li>
 				      	<div class="grid grid-1">
+				      		<?php 
+				      			$none=''; $bf=''; $aux_doenca=''; $aposentadoria=''; $outros='';
+				      			if(old('beneficios')){
+				      				switch (old('beneficios')) {
+				      					case '':
+				      						$none = 'selected';
+				      						break;
+				      					case 'bf':
+				      						$bf = 'selected';
+				      						break;
+				      					case 'aux_doenca':
+				      						$aux_doenca = 'selected';
+				      						break;
+				      					case 'aposentadoria':
+				      						$aposentadoria = 'selected';
+				      						break;
+				      					case 'outros':
+				      						$outros = 'selected';
+				      						break;
+				      				}
+				      			}else {
+				      				$none = "selected";
+				      			}
+				      		 ?>
 					      	<div>
 					      		<label for="beneficios">Beneficios</label>
 						      	<select id="beneficios" name="beneficios">
-								  <option selected disabled>-- Escolha uma opçao--</option>
-								  <option value="bf">B.F</option>
-								  <option value="aux_doenca">AUX. DOENCA</option>
-								  <option value="aposentadoria">APOSENTADORIA</option>
-								  <option value="outros">OUTROS</option>      
+								  <option {{$none}} disabled>-- Escolha uma opçao--</option>
+								  <option {{$bf}} value="bf">B.F</option>
+								  <option {{$aux_doenca}} value="aux_doenca">AUX. DOENCA</option>
+								  <option {{$aposentadoria}} value="aposentadoria">APOSENTADORIA</option>
+								  <option {{$outros}} value="outros">OUTROS</option>      
 								</select>
 								@if ($errors->first('beneficios'))
 				      	  		<div class="error-msg">

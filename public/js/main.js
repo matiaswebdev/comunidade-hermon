@@ -1,4 +1,16 @@
-// Controla o blur dos botões do formulário de ativos.
+/*
+*
+*
+*
+*
+*
+* Controla o blur dos botões do formulário de ativos.
+*
+*
+*
+*
+*
+*/ 
 
 const checkbox = document.querySelector('.terms #terms');
 const btns = document.querySelectorAll(".my-form button");
@@ -11,7 +23,21 @@ checkbox.addEventListener("change", function() {
 });
 
 
-// Mascara pada os campos de data
+
+/*
+*
+*
+*
+*
+*
+* Mascara pada os campos de data
+*
+*
+*
+*
+*
+*/ 
+
 function mascaraData(val) {
   var pass = val.value;
   var expr = /[0123456789]/;
@@ -81,4 +107,29 @@ function mascaraData(val) {
   if (pass.length > 10)
     val.value = val.value.substring(0, 10);
   return true;
+}
+
+
+/*
+*
+*
+*
+*
+*
+* Gerar data atual no formatao brasileiro para facilitar 
+* preenchimento dos campos de formulario
+*
+*
+*
+*
+*/ 
+
+function data_atual(el){
+
+	// var data = new Date();
+	// var dia = data.getDate();
+	// var mes = data.getMonth();
+	// var ano = data.getFullYear();
+	var data = new Date();
+	el.value = data.getDate() + '/' + data.getMonth() + '/' + data.getFullYear(); 
 }
