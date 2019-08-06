@@ -53,10 +53,19 @@ class InternosController extends Controller
      */
     public function store(StoreInternos $request)
     {
+        function date_transform($val) {
+            if(empty($val)){
+                return null;
+            }
+            return implode('-', array_reverse(explode('/', $val)));
+        }
 
-        $data_entrada = implode('-', array_reverse(explode('/', $request['data_entrada'])));
-        $data_saida = implode('-', array_reverse(explode('/', $request['data_saida'])));
-        $nascimento = implode('-', array_reverse(explode('/', $request['nascimento'])));
+        $data_entrada = date_transform($request['data_entrada']);
+        $data_saida = date_transform($request['data_saida']);
+        $nascimento = date_transform($request['nascimento']);
+        $nome = trim(strtolower($request['nome']));
+
+        
 
         $documentosJSON = json_encode([
             ['docs_rg' => $request['docs_rg']],
@@ -70,7 +79,7 @@ class InternosController extends Controller
 
         $internos = Internos::create([
             'num_vaga' => Internos::max('num_vaga') + 1,
-            'nome' => $request['nome'],
+            'nome' => $nome,
             //'foto_url' => $request['foto_url'],
             'data_entrada' => $data_entrada,
             'data_saida' => $data_saida,

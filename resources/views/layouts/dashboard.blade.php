@@ -25,7 +25,7 @@
     <!-- Left Menu -->
     <div class="left">
         <section class="menu">
-            <div class="profile-picture"></div>
+            <div class="profile-picture" style="background-image: url({{asset('images/person.png')}}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
             <p class="username">{{ $data['username'] }}</p>
             <p class="cargo">{{ $data['cargo']}}</p>
             <hr>

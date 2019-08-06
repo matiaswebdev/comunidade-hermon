@@ -18,11 +18,11 @@ class CreateInternosTable extends Migration
             $table->bigInteger('num_vaga')->unique();
             $table->string('nome');
             $table->text('foto_url')->nullable();
-            $table->date('data_entrada');
-            $table->date('data_saida')->nullable();
+            $table->date('data_entrada')->default(NULL);
+            $table->date('data_saida')->nullable()->default(NULL);
             $table->text('motivo_saida')->nullable();
             $table->enum('procedencia', ['fas','creas','social','familia']);
-            $table->date('nascimento')->nullable();
+            $table->date('nascimento')->nullable()->default(NULL);
             $table->string('naturalidade')->nullable();
             $table->string('rg')->nullable();
             $table->string('cpf')->nullable();

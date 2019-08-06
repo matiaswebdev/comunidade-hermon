@@ -34,15 +34,18 @@ body {
 
 .menu .username {
 	text-align: center;
-	padding-bottom: .5em;
+	padding-bottom: -.5em;
 }
 
 .profile-picture {
 	width: 100px;
 	height: 100px;
 	border-radius: 50%;
-	background-color: gray;
-	margin-bottom: 1.5em;
+	background-color: #070b17;
+	margin-bottom: 1em;
+  -webkit-box-shadow: -3px 0px 3px 0px rgba(0, 0, 0, 0.38);
+  -moz-box-shadow:    -3px 0px 3px 0px rgba(0, 0, 0, 0.38);
+  box-shadow:         -3px 0px 3px 0px rgba(0, 0, 0, 0.38);
 }
 
 .menu p{
