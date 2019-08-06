@@ -11,29 +11,51 @@
 				      	<div class="grid grid-1">
 				      	  <div>
 				      	  	<label for="num_vaga">Vaga</label>	      		
-						  	<input id="num_vaga" type="text" value="0001" name="num_vaga" required>
+						  	<input id="num_vaga" type="text" value="000{{$data['next_num_vaga']}}" name="num_vaga" required>
 				      	  </div>
 						</div>
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="nome">Nome</label>			      		
-						  	<input id="num_vaga" type="nome" name="nome" value="" required>
+						  	<input id="num_vaga" type="nome" name="nome" value="{{old('nome')}}" required>
+						  	@if ($errors->first('nome'))
+				      	  	<div class="error-msg">
+								{{ $errors->first('nome')}}
+							</div>
+							@endif
 				      	  </div>
 						</div>
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="data_entrada">D. Entrada</label>			      		
-						  	<input id="data_entrada" type="text" value="" name="data_entrada" required>
+						  	<input id="data_entrada" type="text" maxlength="10" onkeypress="mascaraData(this)" value="{{old('data_entrada')}}" name="data_entrada" required>
+						  	@if ($errors->first('data_entrada'))
+				      	  	<div class="error-msg">
+								{{ $errors->first('data_entrada')}}
+							</div>
+							@endif
 				      	  </div>
+				      	  
 				      	  <div>
 				      	  	<label for="data_saida">D. Saida</label>			      		
-						  	<input id="data_saida" type="text" name="data_saida" value="">
+						  	<input id="data_saida" type="text" maxlength="10" onkeypress="mascaraData(this)" name="data_saida" value="{{old('data_saida')}}">
+						  	 @if ($errors->first('data_saida'))
+				      	  	<div class="error-msg">
+								{{ $errors->first('data_saida')}}
+							</div>
+							@endif
 				      	  </div>
+				      	 
 						</div>
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="motivo_saida">Motivo da saida</label>		      		
-						  	<input id="motivo_saida" name="motivo_saida" type="text" value="">
+						  	<input id="motivo_saida" name="motivo_saida" type="text" value="{{old('motivo_saida')}}">
+						  	@if ($errors->first('motivo_saida'))
+				      	  	<div class="error-msg">
+								{{ $errors->first('motivo_saida')}}
+							</div>
+							@endif
 				      	  </div>
 						</div>
 				      </li> 
@@ -48,6 +70,11 @@
 								  <option value="social">SOCIAL</option>
 								  <option value="familia">FAMILIA</option>    
 								</select>
+								@if ($errors->first('procedencia'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('procedencia')}}
+								</div>
+								@endif
 							</div>
 						</div>
 					  </li>
@@ -55,11 +82,21 @@
 				      	<div class="grid grid-2">
 				      	  <div>
 				      	  	<label for="nascimento">Nascimento</label>			      		
-						  	<input id="nascimento" type="text" name="nascimento" value="" >
+						  	<input id="nascimento" type="text" maxlength="10" onkeypress="mascaraData(this)" name="nascimento" value="{{old('nascimento')}}" >
+						  	@if ($errors->first('nascimento'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('nascimento')}}
+								</div>
+							@endif
 				      	  </div>
 				      	  <div>
 				      	  	<label for="naturalidade">Naturalidade</label>			      		
-						  	<input id="naturalidade" type="text" name="naturalidade" value="" >
+						  	<input id="naturalidade" type="text" name="naturalidade" value="{{old('naturalidade')}}" >
+						  	@if ($errors->first('naturalidade'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('naturalidade')}}
+								</div>
+							@endif
 				      	  </div>
 						</div>
 				      </li> 
@@ -67,11 +104,21 @@
 				      	<div class="grid grid-2">
 				      	  <div>
 				      	  	<label for="rg">Rg</label>			      		
-						  	<input id="rg" type="text" name="rg" value="" >
+						  	<input id="rg" type="text" name="rg" value="{{old('rg')}}" >
+						  	@if ($errors->first('rg'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('rg')}}
+								</div>
+							@endif
 				      	  </div>
 				      	  <div>
 				      	  	<label for="cpf">Cpf</label>			      		
-						  	<input id="cpf" type="text" name="cpf" value="" >
+						  	<input id="cpf" type="text" name="cpf" value="{{old('cpf')}}" >
+						  	@if ($errors->first('cpf'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('cpf')}}
+								</div>
+							@endif
 				      	  </div>
 						</div>
 				      </li> 
@@ -79,11 +126,21 @@
 				      	<div class="grid grid-2">
 				      	  <div>
 				      	  	<label for="nome_pai">Pai</label>			      		
-						  	<input id="nome_pai" type="text" name="nome_pai" value="" >
+						  	<input id="nome_pai" type="text" name="nome_pai" value="{{old('nome_pai')}}" >
+						  	@if ($errors->first('nome_pai'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('nome_pai')}}
+								</div>
+							@endif
 				      	  </div>
 				      	  <div>
 				      	  	<label for="nome_mae">Mae</label>			      		
-						  	<input id="nome_mae" type="text" name="nome_mae" value="" >
+						  	<input id="nome_mae" type="text" name="nome_mae" value="{{old('nome_mae')}}" >
+						  	@if ($errors->first('nome_mae'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('nome_mae')}}
+								</div>
+							@endif
 				      	  </div>
 						</div>
 				      </li>
@@ -98,6 +155,11 @@
 								  <option value="divorciado">DIVORCIADO</option>
 								  <option value="outros">OUTROS</option>      
 								</select>
+								@if ($errors->first('estado_civil'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('estado_civil')}}
+								</div>
+								@endif
 							</div>
 							<div>
 					      		<label for="grau_instrucao">Grau de Instruçao</label>
@@ -108,6 +170,11 @@
 								  <option value="medio">MEDIO</option>
 								  <option value="superior">SUPERIOR</option>      
 								</select>
+								@if ($errors->first('grau_instrucao'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('grau_instrucao')}}
+								</div>
+								@endif
 							</div>
 						</div>	
 					  </li>
@@ -115,7 +182,7 @@
 				      	<div class="grid grid-1">
 				      	  <div>
 				      	  	<label for="pendencia_judicial">Pendencia Judicial</label>
-						  	<input id="pendencia_judicial" type="text" name="pendencia_judicial" value="" >
+						  	<input id="pendencia_judicial" type="text" name="pendencia_judicial" value="{{old('pendencia_judicial')}}" >
 				      	  </div>
 						</div>
 				      </li> 
@@ -123,7 +190,7 @@
 				      	<div class="grid grid-1">
 				      	  <div>
 				      	  	<label for="motivo_acolhimento">Motivo Acolhimento</label>	
-						  	<input id="motivo_acolhimento" type="text" name="motivo_acolhimento" value="" >
+						  	<input id="motivo_acolhimento" type="text" name="motivo_acolhimento" value="{{old('motivo_acolhimento')}}" >
 				      	  </div>
 						</div>
 				      </li> 
@@ -131,7 +198,7 @@
 				      	<div class="grid grid-1">
 				      	  <div>
 				      	  	<label for="tratamento_medico">Tratamento medico - Remedios</label>
-						  	<input id="tratamento_medico" type="text" name="tratamento_medico" value="" >
+						  	<input id="tratamento_medico" type="text" name="tratamento_medico" value="{{old('tratamento_medico')}}" >
 				      	  </div>
 						</div>
 				      </li>
@@ -139,11 +206,11 @@
 				      	<div class="grid grid-2">
 				      	  <div>
 				      	  	<label for="profissao">Profissao</label>			      		
-						  	<input id="profissao" type="text" name="profissao" value="" >
+						  	<input id="profissao" type="text" name="profissao" value="{{old('profissao')}}" >
 				      	  </div>
 				      	  <div>
 				      	  	<label for="internamento_anterior">Internamento anterior</label>
-						  	<input id="internamento_anterior" type="text" name="internamento_anterior" value="" >
+						  	<input id="internamento_anterior" type="text" name="internamento_anterior" value="{{old('internamento_anterior')}}" >
 				      	  </div>
 						</div>
 				      </li>
@@ -179,7 +246,7 @@
 				      	<div class="grid grid-1">
 				      	  <div>
 				      	  	<label for="contato">Contato</label>
-						  	<input id="contato" type="text" name="contato" value="" >
+						  	<input id="contato" type="text" name="contato" value="{{old('contato')}}" >
 				      	  </div>
 						</div>
 				      </li>
@@ -194,14 +261,25 @@
 								  <option value="aposentadoria">APOSENTADORIA</option>
 								  <option value="outros">OUTROS</option>      
 								</select>
+								@if ($errors->first('beneficios'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('beneficios')}}
+								</div>
+								@endif
 							</div>
 						</div>
 					  </li>
 				      <li>
 				      	<div class="grid grid-1">
 				      	  <div>
-				      	  	<label for="atendente">Atendente</label>			      		
-						  	<input id="atendente" type="text" name="atendente" value="{{$data['username']}}">
+				      	  	<label for="atendente">Atendente</label>
+				      	  	<input type="hidden" name="atendente" value="{{$data['userid']}}">	      		
+						  	<input id="atd" type="text" placeholder="{{$data['username']}}">
+						  	@if ($errors->first('atendente'))
+				      	  		<div class="error-msg">
+									{{ $errors->first('atendente')}}
+								</div>
+							@endif
 				      	  </div>
 						</div>
 				      </li>    
