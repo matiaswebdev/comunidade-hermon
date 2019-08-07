@@ -116,7 +116,7 @@ class InternosController extends Controller
             'atendente' => $request['atendente']
         ]);
 
-        dd($internos);
+        return redirect()->route('internos.interno', ['id' => $internos->id]);
 
     }
 
@@ -144,8 +144,28 @@ class InternosController extends Controller
      */
     public function interno(Internos $internos, Request $request)
     {
-    
-        return $request['id'];
+        // Transforma datas de 0000-00-00 para 00/00/0000
+        function date_transform($val) {
+            return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
+        }
+
+        $interno = Internos::find($request->id);
+
+        $interno->data_entrada = date_transform($interno->data_entrada);
+        $interno->data_saida = date_transform($interno->data_saida);
+        $interno->nascimento = date_transform($interno->nascimento);
+
+        // Convert JSON string to Array
+        $interno->documentos = json_decode($interno->documentos, true);
+
+        $interno->atendente = \App\User::find($interno->atendente)->name;
+
+        
+       return view('internos.single')->with('data', [
+            'username' => \Auth::user()->name,
+            'cargo' => 'Colaborador',
+            'interno' => $interno
+        ]);
         
     }
 

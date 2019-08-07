@@ -11,7 +11,7 @@
 		<form class="my-form" method="POST" action="/internos/create">
 			@csrf
 		   <div class="container">
-		    	<h1>Registrar Interno</h1>
+		    	<h1>NOVO REGISTRO</h1>
 			    <ul>
 			          <li>
 				      	<div class="grid grid-1">
@@ -68,7 +68,11 @@
 							@endif
 				      	  </div>
 						</div>
-				      </li> 
+				      </li>
+
+
+
+
 				      <li>
 				      	<div class="grid grid-1"> 
 				      		<?php 
