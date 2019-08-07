@@ -176,10 +176,12 @@ $(document).ready(()=>{
 				url: "/internos/show",
 				data : {search: nome},
 				beforeSend: () => {
-					console.log('enviando...');
+					$('#ajax-error-msg').hide();
+					$('#ajax-loader').show();
 				}
 				})
 				.done((msg)=>{
+					$('#ajax-loader').hide();
 					$('#ajax-error-msg').hide();
 					var isEmpty = jQuery.isEmptyObject(msg);
 					if(!isEmpty){
@@ -194,4 +196,47 @@ $(document).ready(()=>{
 			
 		}
 	});
+});
+
+
+/*
+*
+*
+*
+*
+*
+* Menu esquerdo da dashboard toggler para o menu
+* 
+*
+*
+*
+*
+*/ 
+const actual_location = $(location).attr('href').split('/')[3];
+if(actual_location === 'internos'){
+	$('#internos').addClass('selected');
+}
+
+$('#internos').click((ev)=>{
+	$('#internos').toggleClass('selected');
+});
+
+$('#usuarios').click((ev)=>{
+	ev.preventDefault();
+	$('#usuarios').toggleClass('selected');
+});
+
+$('#restricoes').click((ev)=>{
+	ev.preventDefault();
+	$('#restricoes').toggleClass('selected');
+});
+
+$('#relatorios').click((ev)=>{
+	ev.preventDefault();
+	$('#relatorios').toggleClass('selected');
+});
+
+$('#suporte').click((ev)=>{
+	ev.preventDefault();
+	$('#suporte').toggleClass('selected');
 });

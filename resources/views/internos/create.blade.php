@@ -24,6 +24,7 @@
 						  <div>
 				      	  	<label for="nome">Nome</label>			      		
 						  	<input id="nome" type="nome" name="nome" value="{{old('nome')}}" autocomplete="off" required>
+						  	<div class="loader" id="ajax-loader" style="display: none;">Loading...</div>
 						  	@if ($errors->first('nome'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('nome')}}

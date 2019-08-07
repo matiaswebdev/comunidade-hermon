@@ -31,18 +31,34 @@
             <p class="cargo">{{ $data['cargo']}}</p>
             <hr>
 
-            <div class="menu-links">
+            <div class="menu-links" id="jq-menulinks">
                 <ul>
-                    <li class="selected"><a href="/internos/index">Internos</a>
+                    <li id="internos"><a href="#">Internos</a>
                         <ul>
                             <li><a href="/internos/index">Procurar</a></li>
                             <li><a href="/internos/create">Novo</a></li>
                         </ul>
                     </li>
-                    <li><a href="#">Usuários</a></li>
-                    <li><a href="#">Restrições</a></li>
-                    <li><a href="#">Relatório</a></li>
-                    <li><a href="#">Suporte</a></li>
+                    <li id="usuarios"><a href="#">Usuários</a>
+                        <ul>
+                            <li><a href="#">teste</a></li>
+                        </ul>
+                    </li>
+                    <li id="restricoes"><a href="#">Restrições</a>
+                        <ul>
+                            <li><a href="#">teste</a></li>
+                        </ul>
+                    </li>
+                    <li id="relatorios"><a href="#">Relatórios</a>
+                        <ul>
+                            <li><a href="#">teste</a></li>
+                        </ul>
+                    </li>
+                    <li id="suporte"><a href="#">Suporte</a>
+                        <ul>
+                            <li><a href="#">teste</a></li>
+                        </ul>
+                    </li>
                 </ul>
             </div>
         </section>
