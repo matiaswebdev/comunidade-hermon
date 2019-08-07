@@ -1,3 +1,4 @@
+
 /*
 *
 *
@@ -14,13 +15,16 @@
 
 const checkbox = document.querySelector('.terms #terms');
 const btns = document.querySelectorAll(".my-form button");
- 
-checkbox.addEventListener("change", function() {
-  const checked = this.checked;
-  for (const btn of btns) {
-    checked ? (btn.disabled = false) : (btn.disabled = true);
-  }
-});
+
+if(checkbox !== null){
+	checkbox.addEventListener("change", function() {
+	  	const checked = this.checked;
+	  	for (const btn of btns) {
+	    	checked ? (btn.disabled = false) : (btn.disabled = true);
+	  	}
+	});
+}
+
 
 
 
@@ -126,10 +130,68 @@ function mascaraData(val) {
 
 function data_atual(el){
 
-	// var data = new Date();
-	// var dia = data.getDate();
-	// var mes = data.getMonth();
-	// var ano = data.getFullYear();
 	var data = new Date();
 	el.value = data.getDate() + '/' + data.getMonth() + '/' + data.getFullYear(); 
 }
+
+
+
+
+/*
+*
+*
+*
+*
+*
+* Verifica se interno ja tem cadastro no 
+* sistema antes de preencher todo o formulario.
+*
+*
+*
+*
+*/ 
+
+
+$(document).ready(()=>{
+
+	var timeout = null;
+
+	$.ajaxSetup({
+		headers: {
+			'X-CSRF-TOKEN' : $('meta[name="csrf-token"]').attr('content')
+		}
+	});
+
+	$('#nome').on('keyup', ()=>{
+
+		if($('#nome').val().length > 3){
+			clearTimeout(timeout);
+
+			timeout = setTimeout(()=>{
+
+				var nome = $('#nome').val()
+
+				$.ajax({
+				type: 'POST',
+				url: "/internos/show",
+				data : {search: nome},
+				beforeSend: () => {
+					console.log('enviando...');
+				}
+				})
+				.done((msg)=>{
+					$('#ajax-error-msg').hide();
+					var isEmpty = jQuery.isEmptyObject(msg);
+					if(!isEmpty){
+						$('#ajax-error-msg').show();
+					}
+				})
+				.fail((jqXHR, textStatus, msg)=> {
+					console.log(msg);
+				})
+
+			}, 1000);
+			
+		}
+	});
+});

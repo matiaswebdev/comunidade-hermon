@@ -126,9 +126,14 @@ class InternosController extends Controller
      * @param  \App\Internos  $internos
      * @return \Illuminate\Http\Response
      */
-    public function show(Internos $internos)
+    public function show(Internos $internos, Request $request)
     {
-        //
+        $search = trim(strtolower($request->search));
+
+        $interno = $internos::where('nome', $search)->first();
+
+        return response()->json($interno);
+        
     }
 
     /**

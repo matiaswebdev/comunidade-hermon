@@ -10,6 +10,7 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
+    <script src="{{asset('js/ajax.js')}}"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
 
     <!-- Fonts -->

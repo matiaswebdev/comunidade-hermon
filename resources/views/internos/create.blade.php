@@ -23,18 +23,21 @@
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="nome">Nome</label>			      		
-						  	<input id="num_vaga" type="nome" name="nome" value="{{old('nome')}}" required>
+						  	<input id="nome" type="nome" name="nome" value="{{old('nome')}}" autocomplete="off" required>
 						  	@if ($errors->first('nome'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('nome')}}
 							</div>
 							@endif
+							<div class="error-msg" id="ajax-error-msg" style="display: none;">
+								Ja existe um cadastro com esse nome.
+							</div>
 				      	  </div>
 						</div>
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="data_entrada">D. Entrada</label>			      		
-						  	<input id="data_entrada" type="text" maxlength="10" ondblclick="data_atual(this)" value="{{old('data_entrada')}}" name="data_entrada" required>
+						  	<input id="data_entrada" type="text" maxlength="10" onfocusout="data_atual(this)" value="{{old('data_entrada')}}" name="data_entrada" required>
 						  	@if ($errors->first('data_entrada'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_entrada')}}
