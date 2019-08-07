@@ -67,6 +67,7 @@
 
 
         <section class="top-menu">
+            <h2>COMUNIDADE<span>HERMON</span></h2>
             <form id="logout-form" action="{{ route('logout') }}" method="POST" style="">
                 @csrf
                 <button type="submit" name="submit">Logout</button>

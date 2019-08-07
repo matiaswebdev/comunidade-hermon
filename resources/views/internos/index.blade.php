@@ -12,22 +12,55 @@
 				  </div>
             </form>		
 		</div>
-			@if ( isset($data['internos']) )
-    			@foreach ($data['internos'] as $interno)
-    				<div class="listagem">
-    					<div class="listagem-circle"></div>
-    					<div class="dados">
-    						<p><span>Nome: </span> {{ $interno['nome']}} </p>
-    						<p><span>D.Entrada: </span>  {{ $interno['data_entrada']}}</p>
-    					</div>
-    				</div>
-				@endforeach	
-			@endif
-			@if (!isset($data['internos']) || count($data['internos']) < 1)
-				<div class="listagem">
-    				<p>Nenhum registro encontrado.</p>
-    			</div>
-			@endif
-		
+			@if (count($data['internos']) > 0)
+
+<div class="wrapper">
+  
+  <div class="table">
+    
+    <div class="row header">
+      <div class="cell">
+        Nome
+      </div>
+      <div class="cell">
+        D.Entrada
+      </div>
+      <div class="cell">
+        No Hermon
+      </div>
+    </div>
+
+    @foreach ($data['internos'] as $interno)
+    <div class="row">
+      <div class="cell" data-title="nome">
+        <a class="css-nome" href="/internos/interno/{{$interno['id']}}">{{ucfirst($interno['nome'])}}</a>
+      </div>
+      <div class="cell" data-title="data_entrada">
+        {{$interno['data_entrada']}}
+      </div>
+      <div class="cell" data-title="na_comunidade">
+       	@if ($interno['data_saida'] == '')
+       		não
+       	@else
+       		sim
+       	@endif
+      </div>
+    </div>
+    @endforeach
+
+  </div>
+  <div class="pagination-wrapper">
+  	{{$data['internos']->links()}}
+  </div>
+  
+</div>
+	
+@endif
+@if (!isset($data['internos']) || count($data['internos']) < 1)
+	<div class="listagem">
+		<p>Nenhum registro encontrado.</p>
 	</div>
+@endif
+
+</div>
 @endsection

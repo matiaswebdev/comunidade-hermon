@@ -16,7 +16,7 @@ class InternosController extends Controller
     public function index(Request $request)
     {
         // Busca de internos com parametros.
-        $internos = Internos::where('nome', 'like', '%'.$request['busca'].'%')->orderby('nome')->get();
+        $internos = Internos::where('nome', 'like', '%'.$request['busca'].'%')->orderby('nome')->paginate(15);
 
         // Transforma datas de 0000-00-00 para 00/00/0000
         function date_transform($val) {
@@ -133,6 +133,19 @@ class InternosController extends Controller
         $interno = $internos::where('nome', $search)->first();
 
         return response()->json($interno);
+        
+    }
+
+    /**
+     * Display the specified resource.
+     *
+     * @param  \App\Internos  $internos
+     * @return \Illuminate\Http\Response
+     */
+    public function interno(Internos $internos, Request $request)
+    {
+    
+        return $request['id'];
         
     }
 
