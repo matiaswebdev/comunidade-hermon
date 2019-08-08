@@ -28,6 +28,9 @@
       <div class="cell">
         No Hermon
       </div>
+      <div>
+        Ação
+      </div>
     </div>
 
     @foreach ($data['internos'] as $interno)
@@ -44,6 +47,10 @@
        	@else
        		sim
        	@endif
+      </div>
+      <div class="cell" data-title="acao">
+        <button><a  href="/internos/interno/{{$interno['id']}}">Ver</a></button>
+        <button class="danger"><a  href="#">Excluir</a></button>
       </div>
     </div>
     @endforeach

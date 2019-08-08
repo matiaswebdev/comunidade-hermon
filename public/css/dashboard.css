@@ -155,7 +155,7 @@ body {
 *
 *
 */
-.top-menu button {
+.top-menu button, .cell button {
   background-color: #37AEA7;
   border: none;
   color: white;
@@ -168,7 +168,24 @@ body {
   cursor: pointer;
 }
 
-.top-menu button:hover {
+.cell button {
+  font-size: 14px;
+  margin: 1px 1px;
+}
+
+.cell .danger {
+  background-color: #f66;
+}
+
+.cell .danger:hover {
+  background-color: #fc3232;
+}
+
+.cell button a{
+  color: white;
+}
+
+.top-menu button:hover, .cell button:hover {
   background-color: #699D9A;
 }
 
