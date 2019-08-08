@@ -2,7 +2,7 @@
 
 @section('content')
 	<div class="content">
-		<h2>Lista de Internos</h2>
+		<h1>LISTA DE INTERNOS</h1>
 		<div class="busca">
 			<form id="logout-form" action="{{ route('internos.index') }}" method="GET">
                @csrf
@@ -28,7 +28,7 @@
       <div class="cell">
         No Hermon
       </div>
-      <div>
+      <div class="cell">
         Ação
       </div>
     </div>
@@ -43,14 +43,13 @@
       </div>
       <div class="cell" data-title="na_comunidade">
        	@if ($interno['data_saida'] == '')
-       		não
-       	@else
        		sim
+       	@else
+       		nao
        	@endif
       </div>
       <div class="cell" data-title="acao">
-        <button><a  href="/internos/interno/{{$interno['id']}}">Ver</a></button>
-        <button class="danger"><a  href="#">Excluir</a></button>
+        <a class="index-ver" href="/internos/interno/{{$interno['id']}}"><button>Ver</button></a>
       </div>
     </div>
     @endforeach

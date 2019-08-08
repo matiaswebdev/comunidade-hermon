@@ -1,7 +1,7 @@
 /*
 *
 *
-*  ESTILO GERAL DA DASHBOARD
+*  DASHBOARD MAIN
 *
 *
 */
@@ -15,6 +15,9 @@ body {
 	display: flex;
 	justify-content: flex-start;
 }
+
+
+/* LEFT MENU */
 
 .menu {
 	width: 16vw;
@@ -70,7 +73,7 @@ body {
 .menu-links {
 	width: 100%;
 	height: 400px;
-	background-color: transparent; /*#191D29;*/
+	background-color: transparent;
 	transform: translateX(-70px);
 	display: flex;
 	justify-content: center;
@@ -110,7 +113,9 @@ body {
 }
 
 
-/* Top Menu */
+/* RIGHT SECTION */
+
+
 .right {
 	width: 80vw;
 	height: 2100px;
@@ -123,6 +128,10 @@ body {
 	box-shadow:         -5px 0px 5px 0px rgba(0, 0, 0, 0.38);
 	color: white;
 }
+
+
+/* TOP RIGHT MENU */
+
 
 .right .top-menu {
 	width: 95%;
@@ -147,14 +156,6 @@ body {
 	margin-right: 2em;
 }
 
-
-/*
-*
-*
-*  ESTILO MENU SUPERIOR
-*
-*
-*/
 .top-menu button, .cell button {
   background-color: #37AEA7;
   border: none;
@@ -168,28 +169,18 @@ body {
   cursor: pointer;
 }
 
-.cell button {
-  font-size: 14px;
-  margin: 1px 1px;
-}
-
-.cell .danger {
-  background-color: #f66;
-}
-
-.cell .danger:hover {
-  background-color: #fc3232;
-}
-
-.cell button a{
-  color: white;
-}
-
-.top-menu button:hover, .cell button:hover {
+.top-menu button:hover {
   background-color: #699D9A;
 }
 
+/* MAIN CONTENT */
 
+
+.main-content {
+  width: 100%;
+  height: 100%;
+  padding: 1em;
+}
 
 
 
@@ -197,25 +188,23 @@ body {
 /*
 *
 *
-*  ESTILO DA LISTA DE INTERNOS
+*  DASHBOARD INDEX
 *
 *
 */
 
 
-
-
-/* Lista de Internos */
-
-.main-content {
-	width: 100%;
-	height: 100%;
-	padding: 1em;
+.index-ver button {
+  font-size: 14px;
+  margin: 1px 1px;
 }
 
-.main-content h2 {
-	opacity: .9;
-	font-weight: 500;
+.index-ver button a{
+  color: white;
+}
+
+.index-ver button:hover {
+  background-color: #699D9A;
 }
 
 
@@ -353,13 +342,10 @@ body {
   background: #32384b;
 }
 .row.header .cell {
+  padding: 1em .8em;
   color: #c9c9c9;
 }
-.row.green {
-  background: #27ae60;
-}
-.row.blue {
-  background: #2980b9;}
+
 
 .cell a {
     text-decoration: none;
@@ -438,6 +424,19 @@ body {
 .pagination li span {
   cursor: pointer;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -831,3 +830,48 @@ body {
     box-shadow: 0em -2.6em 0em 0em rgba(255, 255, 255, 0.2), 1.8em -1.8em 0 0em rgba(255, 255, 255, 0.2), 2.5em 0em 0 0em rgba(255, 255, 255, 0.2), 1.75em 1.75em 0 0em rgba(255, 255, 255, 0.2), 0em 2.5em 0 0em rgba(255, 255, 255, 0.2), -1.8em 1.8em 0 0em rgba(255, 255, 255, 0.5), -2.6em 0em 0 0em rgba(255, 255, 255, 0.7), -1.8em -1.8em 0 0em #ffffff;
   }
 }
+
+
+
+
+
+
+/*
+*
+*
+*  ESTILO DA TELA SINGLE INTERNO
+*
+*
+*/
+
+.single-header {
+  width: 90%;
+  padding-bottom: 3em;
+}
+
+.single-header .single-btns .saida-btn {
+  padding: 0 0 2em 0;
+  color: white;
+}
+
+.single-header .single-btns .saida-btn button{
+  background-color: #37AEA7;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 1px 1px;
+}
+
+.single-header .single-btns .saida-btn button:hover {
+  background-color: #699D9A;
+}
+
+
+

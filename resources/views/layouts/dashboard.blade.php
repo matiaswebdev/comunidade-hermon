@@ -19,6 +19,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
+    @yeld('assets')
 </head>
 
 

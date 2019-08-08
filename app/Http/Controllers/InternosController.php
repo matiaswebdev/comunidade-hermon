@@ -175,6 +175,23 @@ class InternosController extends Controller
      * @param  \App\Internos  $internos
      * @return \Illuminate\Http\Response
      */
+    public function saida(Internos $internos)
+    {
+        
+        return view('internos.saida')->with('data', [
+            'username' => \Auth::user()->name,
+            'cargo' => 'Colaborador',
+            //'interno' => $interno
+        ]);
+    }
+
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Internos  $internos
+     * @return \Illuminate\Http\Response
+     */
     public function edit(Internos $internos)
     {
         //

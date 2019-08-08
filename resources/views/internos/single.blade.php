@@ -3,7 +3,12 @@
 @section('content')
 	<?php $interno = $data['interno']; ?>
 	<div class="create-content">
-		<h1><span>CADASTRO DE </span>{{ strtoupper($interno['nome'])}}</h1>
+		<div class="single-header">
+			<h1><span>CADASTRO DE </span>{{ strtoupper($interno['nome'])}}</h1>
+			<div class="single-btns">
+				<a class="saida-btn" href="/internos/saida/{{$interno['id']}}"><button>Registrar Saida</button></a>
+			</div>
+		</div>
 		<form class="my-form" method="POST" action="/internos/create">
 		<ul>
 			<li>
