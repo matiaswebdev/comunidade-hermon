@@ -301,6 +301,7 @@
 						</div>
 				      </li>
 				      <li>
+				      	<label for="">Possui documentos:</label>
 				      	<div class="grid grid-1">
 				      	  <div class="document-selectors fancy">
 				      	  	<label for="docs_rg">RG</label>
@@ -363,7 +364,7 @@
 				      			}
 				      		 ?>
 					      	<div>
-					      		<label for="beneficios">Beneficios</label>
+					      		<label for="beneficios">Possui beneficios?</label>
 						      	<select id="beneficios" name="beneficios">
 								  <option {{$none}} disabled>-- Escolha uma opçao--</option>
 								  <option {{$bf}} value="bf">B.F</option>
