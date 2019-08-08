@@ -1,0 +1,9 @@
+h1{
+	margin-bottom: 3em;
+}
+
+p span {
+	color: #ffe981;
+	font-weight: 500;
+	text-transform: uppercase;
+}

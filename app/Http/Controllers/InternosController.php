@@ -9,6 +9,29 @@ use App\Http\Requests\StoreInternos;
 class InternosController extends Controller
 {
     /**
+     * Transforma data de 0000-00-00 para 00/00/0000
+     *
+     * @return transformed date
+     */
+    private function date_transform_out($val) {
+        return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
+    }
+
+
+    /**
+     * Transforma data de 0000-00-00 para 00/00/0000
+     *
+     * @return transformed date
+     */
+    private function date_transform_in($val) {
+        if(empty($val)){
+            return null;
+        }
+        return implode('-', array_reverse(explode('/', $val)));
+    }
+
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -18,16 +41,11 @@ class InternosController extends Controller
         // Busca de internos com parametros.
         $internos = Internos::where('nome', 'like', '%'.$request['busca'].'%')->orderby('nome')->paginate(15);
 
-        // Transforma datas de 0000-00-00 para 00/00/0000
-        function date_transform($val) {
-            return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
-        }
-
         // transforma todas as datas dos registros em formato 00/00/0000
         foreach ($internos as $interno) {
-            $interno->data_entrada = date_transform($interno->data_entrada);
-            $interno->data_saida = date_transform($interno->data_saida);
-            $interno->nascimento = date_transform($interno->nascimento);
+            $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
+            $interno->data_saida = $this->date_transform_out($interno->data_saida);
+            $interno->nascimento = $this->date_transform_out($interno->nascimento);
         }
 
         // retorna a view index do modulo internos com dados do usuario e interno
@@ -72,9 +90,9 @@ class InternosController extends Controller
             return implode('-', array_reverse(explode('/', $val)));
         }
 
-        $data_entrada = date_transform($request['data_entrada']);
-        $data_saida = date_transform($request['data_saida']);
-        $nascimento = date_transform($request['nascimento']);
+        $data_entrada = $this->date_transform_in($request['data_entrada']);
+        $data_saida = $this->date_transform_in($request['data_saida']);
+        $nascimento = $this->date_transform_in($request['nascimento']);
         $nome = trim(strtolower($request['nome']));
 
         
@@ -144,16 +162,12 @@ class InternosController extends Controller
      */
     public function interno(Internos $internos, Request $request)
     {
-        // Transforma datas de 0000-00-00 para 00/00/0000
-        function date_transform($val) {
-            return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
-        }
-
+        
         $interno = Internos::find($request->id);
 
-        $interno->data_entrada = date_transform($interno->data_entrada);
-        $interno->data_saida = date_transform($interno->data_saida);
-        $interno->nascimento = date_transform($interno->nascimento);
+        $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
+        $interno->data_saida = $this->date_transform_out($interno->data_saida);
+        $interno->nascimento = $this->date_transform_out($interno->nascimento);
 
         // Convert JSON string to Array
         $interno->documentos = json_decode($interno->documentos, true);
@@ -175,14 +189,32 @@ class InternosController extends Controller
      * @param  \App\Internos  $internos
      * @return \Illuminate\Http\Response
      */
-    public function saida(Internos $internos)
+    public function saidaform(Internos $internos, Request $request)
     {
-        
+        $interno = Internos::find($request->id);
+        $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
+
         return view('internos.saida')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
-            //'interno' => $interno
+            'interno' => $interno
         ]);
+    }
+
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Internos  $internos
+     * @return \Illuminate\Http\Response
+     */
+    public function saidaupdate(Internos $internos, Request $request)
+    {
+        $interno = Internos::find($request->id);
+        $interno->data_saida = $this->date_transform_in($request->data_saida);
+        $interno->motivo_saida = $request->motivo_saida;
+        $interno->save();
+
+        return redirect()->route('internos.interno', ['id' => $request->id]);
     }
 
 
