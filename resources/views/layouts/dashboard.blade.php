@@ -18,8 +18,8 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
-    <link href="{{ asset('css/dashboard.css') }}" rel="stylesheet">
-    @yeld('assets')
+    <link href="{{ asset('css/dashboard/dashboard-main.css') }}" rel="stylesheet">
+    @yield('assets')
 </head>
 
 

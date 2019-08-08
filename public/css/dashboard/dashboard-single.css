@@ -1,0 +1,34 @@
+
+.single-header {
+  width: 90%;
+  padding-bottom: 3em;
+}
+
+.single-header .single-btns .saida-btn {
+  padding: 0 0 2em 0;
+  color: white;
+}
+
+.single-header .single-btns .saida-btn button{
+  background-color: #37AEA7;
+  border: none;
+  color: white;
+  padding: 5px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  font-size: 14px;
+  margin: 1px 1px;
+}
+
+.single-header .single-btns .saida-btn button:hover {
+  background-color: #699D9A;
+}
+
+.single-header button:disabled {
+  background-color: #272D40 !important;
+  color: #72706c !important;
+}

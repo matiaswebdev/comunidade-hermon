@@ -1,5 +1,10 @@
 @extends('layouts.dashboard')
 
+@section('assets')
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/main-form.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/dashboard/dashboard-create.css')}}">
+@endsection
+
 @section('content')
 	<div class="create-content">
 		

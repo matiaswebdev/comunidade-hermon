@@ -1,5 +1,9 @@
 @extends('layouts.dashboard')
 
+@section('assets')
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/dashboard/dashboard-index.css')}}">
+@endsection
+
 @section('content')
 	<div class="content">
 		<h1>LISTA DE INTERNOS</h1>

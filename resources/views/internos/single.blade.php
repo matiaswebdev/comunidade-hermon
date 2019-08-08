@@ -1,12 +1,20 @@
 @extends('layouts.dashboard')
 
+@section('assets')
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/main-form.css')}}">
+  <link rel="stylesheet" type="text/css" href="{{asset('/css/dashboard/dashboard-single.css')}}">
+@endsection
+
 @section('content')
-	<?php $interno = $data['interno']; ?>
+	<?php 
+		$interno = $data['interno']; 
+		$disabled = ($interno['data_saida'] == '') ? '' : 'disabled';
+	?>
 	<div class="create-content">
 		<div class="single-header">
 			<h1><span>CADASTRO DE </span>{{ strtoupper($interno['nome'])}}</h1>
 			<div class="single-btns">
-				<a class="saida-btn" href="/internos/saida/{{$interno['id']}}"><button>Registrar Saida</button></a>
+				<a class="saida-btn" href="/internos/saida/{{$interno['id']}}"><button {{$disabled}}>Registrar Saida</button></a>
 			</div>
 		</div>
 		<form class="my-form" method="POST" action="/internos/create">
