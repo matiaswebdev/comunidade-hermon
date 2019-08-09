@@ -35,7 +35,7 @@ class InternamentosController extends Controller
      */
     public function store(Request $request)
     {
-        return 'internamentos create';
+        //
     }
 
     /**

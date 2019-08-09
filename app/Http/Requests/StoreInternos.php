@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use Illuminate\Validation\Rule;
 
 class StoreInternos extends FormRequest
 {
@@ -25,7 +26,7 @@ class StoreInternos extends FormRequest
     {   
 
         return [
-            'nome' => 'required|unique:internos|max:256',
+            'nome' => ['required','max:256', Rule::unique('internos')->ignore($this->id)],
             'data_entrada' => 'required',
             'procedencia' => 'required|max:256',
             'nascimento' => 'max:10',
