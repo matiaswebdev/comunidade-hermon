@@ -53,6 +53,7 @@ $(document).ready(()=>{
 	});
 
 	$('#nome').on('keyup', ()=>{
+		var url = $('#nome').attr('data-url');
 
 		if($('#nome').val().length > 3){
 			clearTimeout(timeout);
@@ -63,7 +64,7 @@ $(document).ready(()=>{
 
 				$.ajax({
 				type: 'POST',
-				url: "/internos/show",
+				url: `${url}/internos/show`,
 				data : {search: nome},
 				beforeSend: () => {
 					$('#ajax-error-msg').hide();

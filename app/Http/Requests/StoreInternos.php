@@ -26,7 +26,7 @@ class StoreInternos extends FormRequest
     {   
 
         return [
-            'nome' => ['required','max:256', Rule::unique('internos')->ignore($this->id)],
+            'nome' => 'required|max:256|unique:internos',
             'data_entrada' => 'required',
             'procedencia' => 'required|max:256',
             'nascimento' => 'max:10',

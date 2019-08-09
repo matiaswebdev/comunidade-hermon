@@ -84,17 +84,10 @@ class InternosController extends Controller
      */
     public function store(StoreInternos $request)
     {
-        function date_transform($val) {
-            if(empty($val)){
-                return null;
-            }
-            return implode('-', array_reverse(explode('/', $val)));
-        }
 
         $data_entrada = $this->date_transform_in($request['data_entrada']);
         $data_saida = $this->date_transform_in($request['data_saida']);
         $nascimento = $this->date_transform_in($request['nascimento']);
-        $nome = trim(strtolower($request['nome']));
 
         
 
@@ -110,7 +103,7 @@ class InternosController extends Controller
 
         $internos = Internos::create([
             'num_vaga' => Internos::max('num_vaga') + 1,
-            'nome' => $nome,
+            'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
             'data_entrada' => $data_entrada,
             'data_saida' => $data_saida,
@@ -258,7 +251,6 @@ class InternosController extends Controller
         $data_entrada = $this->date_transform_in($request['data_entrada']);
         $data_saida = $this->date_transform_in($request['data_saida']);
         $nascimento = $this->date_transform_in($request['nascimento']);
-        $nome = trim(strtolower($request['nome']));
 
         
 
@@ -274,7 +266,7 @@ class InternosController extends Controller
 
         $internos = Internos::where('id', $request->id)->update([
             //'num_vaga' => Internos::max('num_vaga') + 1,
-            'nome' => $nome,
+            'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
             'data_entrada' => $data_entrada,
             'data_saida' => $data_saida,

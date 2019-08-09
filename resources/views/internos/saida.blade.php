@@ -10,7 +10,7 @@
 <div class="create-content">
 	<h1>REGISTRAR TERMINO DO TRATAMENTO </h1>
 	<p>Registrar data de término de tratamento para: <span>{{$interno['nome']}}</span>?</p>
-	<form class="my-form" method="POST" action="/internos/saida/{{$interno['id']}}">
+	<form class="my-form" method="POST" action="{{url('/internos/saida/'.$interno['id'])}}">
 		@csrf
 		<div class="container">
 			<ul>

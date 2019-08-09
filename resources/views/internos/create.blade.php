@@ -13,7 +13,7 @@
 				<p>Existem erros no preenchimento por favor corriga os campos em vermelho. </p>
 			</div>
 			@endif
-		<form class="my-form" method="POST" action="/internos/create">
+		<form class="my-form" method="POST" action="{{url('/internos/create')}}">
 			@csrf
 		   <div class="container">
 		    	<h1>NOVO REGISTRO</h1>
@@ -28,7 +28,7 @@
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="nome">Nome</label>			      		
-						  	<input id="nome" type="nome" name="nome" value="{{old('nome')}}" autocomplete="off" required>
+						  	<input id="nome" type="nome" data-url="{{url('/')}}" name="nome" value="{{old('nome')}}" autocomplete="off" required>
 						  	<div class="loader" id="ajax-loader" style="display: none;">Loading...</div>
 						  	@if ($errors->first('nome'))
 				      	  	<div class="error-msg">

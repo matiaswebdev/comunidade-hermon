@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+<html lang="pt-br">
 <head>
-    <meta charset="utf-8">
+    <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <!-- CSRF Token -->
@@ -31,7 +31,7 @@
     <!-- Left Menu -->
     <div class="left">
         <section class="menu">
-            <a href="/dashboard">
+            <a href="{{url('/dashboard')}}">
                 <div class="profile-picture" style="background-image: url({{asset('images/person.png')}}); background-position: center; background-repeat: no-repeat; background-size: cover;">
                 </div>
             </a>
@@ -41,11 +41,11 @@
 
             <div class="menu-links" id="jq-menulinks">
                 <ul>
-                    <li id=""><a href="/dashboard">Início</a></li>
+                    <li id=""><a href="{{url('/dashboard')}}">Início</a></li>
                     <li id="internos"><a href="#">Internos</a>
                         <ul>
-                            <li><a href="/internos/index">Procurar</a></li>
-                            <li><a href="/internos/create">Novo</a></li>
+                            <li><a href="{{url('/internos/index')}}">Procurar</a></li>
+                            <li><a href="{{url('/internos/create')}}">Novo</a></li>
                         </ul>
                     </li>
                     <li id="usuarios"><a href="#">Usuários</a>
