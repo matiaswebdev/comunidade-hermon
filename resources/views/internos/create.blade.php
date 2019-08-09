@@ -43,7 +43,7 @@
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="data_entrada">D. Entrada</label>			      		
-						  	<input id="data_entrada" type="text" maxlength="10" onfocusout="data_atual(this)" value="{{old('data_entrada')}}" name="data_entrada" required>
+						  	<input id="data_entrada" type="text" maxlength="10"  value="{{old('data_entrada')}}" name="data_entrada" required>
 						  	@if ($errors->first('data_entrada'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_entrada')}}
@@ -53,7 +53,7 @@
 				      	  
 				      	  <div>
 				      	  	<label for="data_saida">D. Saida</label>			      		
-						  	<input id="data_saida" type="text" maxlength="10" onkeypress="mascaraData(this)" name="data_saida" value="{{old('data_saida')}}">
+						  	<input id="data_saida" type="text" maxlength="10"  name="data_saida" value="{{old('data_saida')}}">
 						  	 @if ($errors->first('data_saida'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_saida')}}
@@ -125,7 +125,7 @@
 				      	<div class="grid grid-2">
 				      	  <div>
 				      	  	<label for="nascimento">Nascimento</label>			      		
-						  	<input id="nascimento" type="text" maxlength="10" onkeypress="mascaraData(this)" name="nascimento" value="{{old('nascimento')}}" >
+						  	<input id="nascimento" type="text" maxlength="10" name="nascimento" value="{{old('nascimento')}}" >
 						  	@if ($errors->first('nascimento'))
 				      	  		<div class="error-msg">
 									{{ $errors->first('nascimento')}}

@@ -18,11 +18,11 @@
 					<div class="grid grid-2">
 			      	  <div>
 			      	  	<label>D. Entrada</label>	      		
-					  	<input id="data_entrada" type="text" value="{{$interno['data_entrada']}}" name="num_vaga" readonly>
+					  	<input id="data_entrada" type="text" value="{{$interno['data_entrada']}}"  readonly>
 			      	  </div>
 			      	  <div>
 			      	  	<label for="data_saida">D. Saída</label>	      		
-					  	<input id="data_saida" type="text"  name="data_saida" onkeypress="mascaraData(this)" required>
+					  	<input id="data_saida" type="text"  name="data_saida" required>
 			      	  </div>
 					</div>
 					<div class="grid grid-1">

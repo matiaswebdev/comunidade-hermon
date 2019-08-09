@@ -16,7 +16,7 @@
 			<h1><span>CADASTRO DE </span>{{ strtoupper($interno['nome'])}}</h1>
 			<div class="single-btns">
 				<a class="saida-btn" href="/internos/saida/{{$interno['id']}}"><button {{$saida_disabled}}>Registrar Saida</button></a>
-				<a class="saida-btn" href="/internos/saida/{{$interno['id']}}"><button {{$entrada_disabled}}>Registrar Entrada</button></a>
+				<a class="saida-btn" href="/internos/update/{{$interno['id']}}"><button {{$entrada_disabled}}>Registrar Entrada</button></a>
 			</div>
 		</div>
 		<form class="my-form" method="POST" action="/internos/create">

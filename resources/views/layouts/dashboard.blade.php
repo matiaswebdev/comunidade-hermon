@@ -10,8 +10,10 @@
     <title>{{ config('app.name', 'Laravel') }}</title>
 
     <!-- Scripts -->
-    <script src="{{asset('js/ajax.js')}}"></script>
+    <script src="{{ asset('js/ajax.js')}}"></script>
     <script src="{{ asset('js/main.js') }}" defer></script>
+    <script src="{{ asset('js/data_picker/flatpckr.js')}}"></script>
+    <script src="{{ asset('js/data_picker/pt-br.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -20,6 +22,8 @@
     <!-- Styles -->
     <link href="{{ asset('css/dashboard/dashboard-main.css') }}" rel="stylesheet">
     @yield('assets')
+    <link rel="stylesheet" href="{{asset('css/flatpickr/flatpickr.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{asset('css/flatpickr/dark.css')}}">
 </head>
 
 
