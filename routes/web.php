@@ -27,7 +27,7 @@ Route::middleware(['auth'])->group( function () {
 });
 
 
-// Rotas para adiministração de registros
+// Rotas para adiministração de internos
 Route::middleware(['auth'])->group( function () {
 	
 		Route::get('/internos/index', 'InternosController@index')->name('internos.index');
@@ -37,6 +37,20 @@ Route::middleware(['auth'])->group( function () {
 		Route::get('/internos/interno/{id}', 'InternosController@interno')->name('internos.interno');
 		Route::get('/internos/saida/{id}', 'InternosController@saidaform')->name('internos.saida');
 		Route::post('/internos/saida/{id}', 'InternosController@saidaupdate')->name('internos.saida');
+	
+});
+
+
+// Rotas para internamentos
+Route::middleware(['auth'])->group( function () {
+	
+		
+		Route::post('/internamentos/create', 'InternamentosController@store')->name('internos.store');
+		
+		// Route::post('/internos/show', 'InternosController@show')->name('internos.show');
+		// Route::get('/internos/interno/{id}', 'InternosController@interno')->name('internos.interno');
+		// Route::get('/internos/saida/{id}', 'InternosController@saidaform')->name('internos.saida');
+		// Route::post('/internos/saida/{id}', 'InternosController@saidaupdate')->name('internos.saida');
 	
 });
 

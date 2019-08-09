@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Internos;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreInternos;
+use App\Events\SaidaDeInterno;
 
 class InternosController extends Controller
 {
@@ -213,6 +214,9 @@ class InternosController extends Controller
         $interno->data_saida = $this->date_transform_in($request->data_saida);
         $interno->motivo_saida = $request->motivo_saida;
         $interno->save();
+
+
+        event(new SaidaDeInterno(Internos::find($request->id)));
 
         return redirect()->route('internos.interno', ['id' => $request->id]);
     }
