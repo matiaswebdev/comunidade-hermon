@@ -1,0 +1,71 @@
+.users-home {
+
+}
+
+.users-home h1 {
+	text-transform: uppercase;
+	padding: 0;
+	margin: .5em 0 1em 0;
+}
+
+.row {
+	width: 90%;
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+}
+
+.user-qtd-registros {
+	width: 250px;
+	height: 100px;
+	margin-right: 1em;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.user-qtd-registros .icon {
+	width: 35%;
+	height: 100%;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.light-blue {
+	background-color: #37AEA7;
+}
+
+.roxo {
+	background-color: #771f77;
+}
+
+.user-qtd-registros .icon img {
+	width: 50%;
+	color: white;
+}
+
+.user-qtd-registros .value {
+	width: 65%;
+	height: 100%;
+	padding: 0 .5em;
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+}
+
+.user-qtd-registros .value p {
+	color: #6d3108;
+	margin: .2em 0;
+	font-weight: 500;
+}
+
+.user-qtd-registros .value .title {
+	font-weight: 700;
+}
+
+.user-qtd-registros .value .number {
+	font-size: 1.5em;
+}

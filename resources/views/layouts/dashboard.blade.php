@@ -27,13 +27,17 @@
     <!-- Left Menu -->
     <div class="left">
         <section class="menu">
-            <div class="profile-picture" style="background-image: url({{asset('images/person.png')}}); background-position: center; background-repeat: no-repeat; background-size: cover;"></div>
+            <a href="/dashboard">
+                <div class="profile-picture" style="background-image: url({{asset('images/person.png')}}); background-position: center; background-repeat: no-repeat; background-size: cover;">
+                </div>
+            </a>
             <p class="username">{{ $data['username'] }}</p>
             <p class="cargo">{{ $data['cargo']}}</p>
             <hr>
 
             <div class="menu-links" id="jq-menulinks">
                 <ul>
+                    <li id=""><a href="/dashboard">Início</a></li>
                     <li id="internos"><a href="#">Internos</a>
                         <ul>
                             <li><a href="/internos/index">Procurar</a></li>

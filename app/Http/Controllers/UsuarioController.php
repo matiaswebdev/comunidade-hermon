@@ -10,7 +10,9 @@ class UsuarioController extends Controller
 	 public function dashboard(){
 	 	$data = [
 	 		'username' => \Auth::user()->name,
-	 		'cargo' => 'Colaborador'
+	 		'cargo' => 'Colaborador',
+	 		'internos_total_registros' => \App\Internos::count(),
+	 		'internos_total_na_comunidade' => \App\Internos::where('data_saida', NULL)->count()
 	 	];
 
 	 	return view('user.dashboard')->with('data', $data);
