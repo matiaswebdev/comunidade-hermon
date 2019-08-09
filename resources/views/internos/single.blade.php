@@ -29,12 +29,7 @@
 				      	  </div>
 						</div>
 
-						<div class="grid grid-1">
-						  <div>
-				      	  	<label for="nome">Nome</label>			      		
-						  	<input id="nome" type="nome" name="nome" value="{{ucfirst($interno['nome'])}}" readonly>
-				      	  </div>
-						</div>
+						
 
 						<div class="grid grid-2">
 						  <div>
@@ -54,6 +49,7 @@
 				      	  </div>
 						</div>
 
+
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="nome">Procedência</label>			      		
@@ -61,6 +57,14 @@
 				      	  </div>
 						</div>
 
+						<div class="grid grid-1">
+						  <div>
+				      	  	<label for="nome">Nome</label>			      		
+						  	<input id="nome" type="nome" name="nome" value="{{ucfirst($interno['nome'])}}" readonly>
+				      	  </div>
+						</div>
+
+						
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="nome">Nascimento</label>			      		

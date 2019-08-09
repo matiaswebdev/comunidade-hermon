@@ -25,21 +25,6 @@
 						  	<input id="num_vaga" type="text" value="000{{$data['next_num_vaga']}}" name="num_vaga" required>
 				      	  </div>
 						</div>
-						<div class="grid grid-1">
-						  <div>
-				      	  	<label for="nome">Nome</label>			      		
-						  	<input id="nome" type="nome" data-url="{{url('/')}}" name="nome" value="{{old('nome')}}" autocomplete="off" required>
-						  	<div class="loader" id="ajax-loader" style="display: none;">Loading...</div>
-						  	@if ($errors->first('nome'))
-				      	  	<div class="error-msg">
-								{{ $errors->first('nome')}}
-							</div>
-							@endif
-							<div class="error-msg" id="ajax-error-msg" style="display: none;">
-								Ja existe um cadastro com esse nome.
-							</div>
-				      	  </div>
-						</div>
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="data_entrada">D. Entrada</label>			      		
@@ -60,7 +45,6 @@
 							</div>
 							@endif
 				      	  </div>
-				      	 
 						</div>
 						<div class="grid grid-1">
 						  <div>
@@ -73,12 +57,7 @@
 							@endif
 				      	  </div>
 						</div>
-				      </li>
-
-
-
-
-				      <li>
+						<li>
 				      	<div class="grid grid-1"> 
 				      		<?php 
 				      			$none=''; $fas=''; $creas=''; $social=''; $familia='';
@@ -121,6 +100,24 @@
 							</div>
 						</div>
 					  </li>
+						<div class="grid grid-1">
+						  <div>
+				      	  	<label for="nome">Nome</label>			      		
+						  	<input id="nome" type="nome" data-url="{{url('/')}}" name="nome" value="{{old('nome')}}" autocomplete="off" required>
+						  	<div class="loader" id="ajax-loader" style="display: none;">Loading...</div>
+						  	@if ($errors->first('nome'))
+				      	  	<div class="error-msg">
+								{{ $errors->first('nome')}}
+							</div>
+							@endif
+							<div class="error-msg" id="ajax-error-msg" style="display: none;">
+								Ja existe um cadastro com esse nome.
+							</div>
+				      	  </div>
+						</div>
+						
+				      </li>
+
 				      <li>
 				      	<div class="grid grid-2">
 				      	  <div>

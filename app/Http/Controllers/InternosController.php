@@ -6,6 +6,7 @@ use App\Internos;
 use Illuminate\Http\Request;
 use App\Http\Requests\StoreInternos;
 use App\Events\SaidaDeInterno;
+use App\Http\Requests\UpdateInternos;
 
 class InternosController extends Controller
 {
@@ -245,7 +246,7 @@ class InternosController extends Controller
      * @param  \App\Internos  $internos
      * @return \Illuminate\Http\Response
      */
-    public function update(StoreInternos $request, Internos $internos)
+    public function update(UpdateInternos $request, Internos $internos)
     {
 
         $data_entrada = $this->date_transform_in($request['data_entrada']);

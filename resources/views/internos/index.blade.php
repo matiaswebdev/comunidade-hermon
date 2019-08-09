@@ -49,7 +49,7 @@
        	@if ($interno['data_saida'] == '')
        		sim
        	@else
-       		nao
+       		não
        	@endif
       </div>
       <div class="cell" data-title="acao">
