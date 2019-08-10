@@ -159,7 +159,7 @@ class InternosController extends Controller
     {
         
         $interno = Internos::find($request->id);
-
+        $internamentos = \App\Internamentos::where('internos_id', $request->id)->orderby('data_entrada')->get();
         $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
         $interno->data_saida = $this->date_transform_out($interno->data_saida);
         $interno->nascimento = $this->date_transform_out($interno->nascimento);
@@ -173,7 +173,8 @@ class InternosController extends Controller
        return view('internos.single')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
-            'interno' => $interno
+            'interno' => $interno,
+            'internamentos' => $internamentos
         ]);
         
     }

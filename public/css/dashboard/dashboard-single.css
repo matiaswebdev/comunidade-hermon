@@ -32,3 +32,44 @@
   background-color: #272D40 !important;
   color: #72706c !important;
 }
+
+.historico-modal {
+  display: none;
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(255,255,255,.4);
+  z-index: 1000;
+}
+
+.historico-modal .card {
+  width: 50vw;
+  height: 50vh;
+  background-color: white;
+  position: fixed;
+  left: 20vw;
+  top: 5em;
+  padding: 1em;
+}
+
+.historico-modal .card .card-close {
+  width: 20%;
+  color: black;
+  cursor: pointer;
+  position: relative;
+  left: 80%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.historico-modal .card .card-header {
+  color: black;
+}
+
+.historico-modal .card .card-body {
+  width: 80%;
+  color: black;
+}

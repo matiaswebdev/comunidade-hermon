@@ -30,7 +30,7 @@ class RegistrarHistoricoDeInternamento
         $interno = $event->interno;
         
         Internamentos::create([
-            'users_id' => $interno->id,
+            'internos_id' => $interno->id,
             'data_entrada' => $interno->data_entrada,
             'data_saida' => $interno->data_saida
         ]);

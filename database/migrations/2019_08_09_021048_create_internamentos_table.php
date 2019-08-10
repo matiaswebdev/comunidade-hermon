@@ -15,7 +15,7 @@ class CreateInternamentosTable extends Migration
     {
         Schema::create('internamentos', function (Blueprint $table) {
             $table->bigIncrements('id');
-            $table->bigInteger('users_id');
+            $table->bigInteger('internos_id');
             $table->date('data_entrada');
             $table->date('data_saida');
             $table->timestamps();

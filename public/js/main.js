@@ -168,3 +168,27 @@ $(document).ready(()=>{
     $("#data_saida").flatpickr(config);
     $("#nascimento").flatpickr(config);
 });
+
+
+/*
+*
+*
+*
+*
+*
+* mostra historico de internamentos na pagina single interno
+* 
+*
+*
+*
+*
+*/ 
+$(document).ready(()=>{
+	$('#js-single-show-modal').on('click', ()=>{
+		$('#historico-modal').show();
+	})
+
+	$('#close').on('click', ()=>{
+		$('#historico-modal').hide();
+	})
+})
