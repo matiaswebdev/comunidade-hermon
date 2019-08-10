@@ -24,8 +24,16 @@
   margin: 1px 1px;
 }
 
+.single-header .single-btns .danger button{
+  background-color: #831919;
+}
+
 .single-header .single-btns .saida-btn button:hover {
   background-color: #699D9A;
+}
+
+.single-header .single-btns .danger button:hover{
+  background-color: #A81818;
 }
 
 .single-header button:disabled {

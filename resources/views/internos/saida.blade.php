@@ -17,20 +17,17 @@
 				<li>
 					<div class="grid grid-2">
 			      	  <div>
-			      	  	<label>D. Entrada</label>	      		
-					  	<input id="data_entrada" type="text" value="{{$interno['data_entrada']}}"  readonly>
-			      	  </div>
-			      	  <div>
 			      	  	<label for="data_saida">D. Saída</label>	      		
 					  	<input id="data_saida" type="text"  name="data_saida" required>
 			      	  </div>
 					</div>
-					<div class="grid grid-1">
+					<div class="grid grid-2">
 						<div>
 			      	  		<label for="motivo_saida">Motivo da Saída</label>	
 					  		<input id="motivo_saida" type="text"  name="motivo_saida" required>
 			      	  </div>
 					</div>
+
 				</li>
 				<li>
 					<div class="grid grid-2">

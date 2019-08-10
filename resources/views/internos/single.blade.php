@@ -13,7 +13,7 @@
 		$internamentos = $data['internamentos'];
 		$saida_disabled = ($interno['data_saida'] == '') ? '' : 'disabled';
 		$entrada_disabled = ($interno['data_saida'] == '') ? 'disabled' : '';
-		$historico_disabled = ($internamentos->count() > 1) ? '' : 'disabled';
+		$historico_disabled = ($internamentos->count() > 0) ? '' : 'disabled';
 	?>
 
 	<div class="create-content">
@@ -24,13 +24,15 @@
 				<a class="saida-btn" href="{{url('/internos/saida/'. $interno['id'])}}"><button {{$saida_disabled}}>Registrar Saida</button></a>
 				<a class="saida-btn" href="{{url('/internos/edit/'. $interno['id'])}}"><button {{$entrada_disabled}}>Novo Internamento</button></a>
 				<a class="saida-btn" id="js-single-show-modal" href="#"><button {{$historico_disabled}}>Histórico</button></a>
+				<a class="saida-btn" id="" href="{{url('/internos/edit/'. $interno['id'])}}"><button >Editar</button></a>
+				<a class="saida-btn danger" id="js-single-show-excluir" href="#"><button disabled>Excluir registro</button></a>
 			</div>
 		</div>
 		<!-- Fim Header -->
 		<!-- Histórico Modal -->
 		<div class="historico-modal" id="historico-modal">
 			<div class="card">
-				<div class="card-close" id="close">close</div>
+				<div class="card-close" id="close">Fechar</div>
 				<div class="card-header"><h2>Histórico</h2></div>
 				<div class="card-body">
 					<?php 

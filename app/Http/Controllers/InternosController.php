@@ -164,6 +164,11 @@ class InternosController extends Controller
         $interno->data_saida = $this->date_transform_out($interno->data_saida);
         $interno->nascimento = $this->date_transform_out($interno->nascimento);
 
+        foreach ($internamentos as $internamento) {
+            $internamento->data_entrada = $this->date_transform_out($internamento->data_entrada);
+            $internamento->data_saida = $this->date_transform_out($internamento->data_saida);
+        }
+
         // Convert JSON string to Array
         $interno->documentos = json_decode($interno->documentos, true);
 

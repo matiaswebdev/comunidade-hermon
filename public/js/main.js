@@ -160,7 +160,7 @@ flatpickr.localize(flatpickr.l10ns.pt);
 const config ={
     altInput: true,
     altFormat: "j/m/Y",
-    dateFormat: "Y-m-d",
+    dateFormat: "Y-m-d"
 }
 
 $(document).ready(()=>{
