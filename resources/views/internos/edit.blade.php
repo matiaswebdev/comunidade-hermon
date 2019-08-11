@@ -51,7 +51,7 @@
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="motivo_saida">Motivo da saida</label>		      		
-						  	<input id="motivo_saida" name="motivo_saida" type="text" value="{{$interno['motivo_saida']}}" disabled>
+						  	<input id="motivo_saida" name="motivo_saida" type="text" value="" disabled>
 						  	@if ($errors->first('motivo_saida'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('motivo_saida')}}
