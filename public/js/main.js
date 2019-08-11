@@ -176,7 +176,7 @@ $(document).ready(()=>{
 *
 *
 *
-* mostra historico de internamentos na pagina single interno
+* mostra modal histórico de internamentos na pagina single interno
 * 
 *
 *
