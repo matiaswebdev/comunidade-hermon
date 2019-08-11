@@ -32,7 +32,8 @@ class RegistrarHistoricoDeInternamento
         Internamentos::create([
             'internos_id' => $interno->id,
             'data_entrada' => $interno->data_entrada,
-            'data_saida' => $interno->data_saida
+            'data_saida' => $interno->data_saida,
+            'motivo_saida' => $interno->motivo_saida
         ]);
     }
 }
