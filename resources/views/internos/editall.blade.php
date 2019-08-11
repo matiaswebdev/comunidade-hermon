@@ -16,7 +16,7 @@
 		<form class="my-form" method="POST" action="{{url('/internos/updateall/'.$interno['id'])}}">
 			@csrf
 		   <div class="container">
-		    	<h1><span style="color: #505050;">NOVO INTERNAMENTO </span> {{strtoupper($interno['nome'])}}</h1>
+		    	<h1><span style="color: #505050;">EDITAR CADASTRO </span> {{strtoupper($interno['nome'])}}</h1>
 			    <ul>
 			          <li>
 				      	<div class="grid grid-1">
