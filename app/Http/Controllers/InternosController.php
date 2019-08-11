@@ -246,6 +246,29 @@ class InternosController extends Controller
     }
 
     /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  \App\Internos  $internos
+     * @return \Illuminate\Http\Response
+     */
+    public function editall(Internos $internos, Request $request)
+    {
+        $user = \Auth::user();
+        $interno = $internos::find($request->id);
+        // Convert JSON string to Array
+        $interno->documentos = json_decode($interno->documentos, true);
+
+        $data = [
+            'username' => $user->name,
+            'userid' => $user->id,
+            'cargo' => 'Colaborador',
+            'interno' => $interno
+        ];
+
+        return view('internos.editall')->with('data', $data);
+    }
+
+    /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -278,6 +301,63 @@ class InternosController extends Controller
             'data_entrada' => $data_entrada,
             'data_saida' => $data_saida,
             'motivo_saida' => '',
+            'procedencia' => $request['procedencia'],
+            'nascimento' => $nascimento,
+            'naturalidade' => $request['naturalidade'],
+            'rg' => $request['rg'],
+            'cpf' => $request['cpf'],
+            'nome_pai' => $request['nome_pai'],
+            'nome_mae' => $request['nome_mae'],
+            'estado_civil' => $request['estado_civil'],
+            'grau_instrucao' => $request['grau_instrucao'],
+            'pendencia_judicial' => $request['pendencia_judicial'],
+            'motivo_acolhimento' => $request['motivo_acolhimento'],
+            'tratamento_medico' => $request['tratamento_medico'],
+            'profissao' => $request['profissao'],
+            'internamento_anterior' => $request['internamento_anterior'],
+            'documentos' => $documentosJSON,
+            'contato' => $request['contato'],
+            'beneficios' => $request['beneficios'],
+            'atendente' => $request['atendente']
+        ]);
+
+        return redirect()->route('internos.interno', ['id' => $request->id]);
+    }
+
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  \App\Internos  $internos
+     * @return \Illuminate\Http\Response
+     */
+    public function updateall(UpdateInternos $request, Internos $internos)
+    {
+
+        $data_entrada = $this->date_transform_in($request['data_entrada']);
+        $data_saida = $this->date_transform_in($request['data_saida']);
+        $nascimento = $this->date_transform_in($request['nascimento']);
+
+        
+
+        $documentosJSON = json_encode([
+            ['docs_rg' => $request['docs_rg']],
+            ['docs_cpf' => $request['docs_cpf']],
+            ['docs_titulo' => $request['docs_titulo']],
+            ['docs_cnh' => $request['docs_cnh']],
+            ['docs_ctps' => $request['docs_ctps']],
+            ['docs_reservista' => $request['docs_reservista']],
+            ['docs_c_nascimento' => $request['docs_c_nascimento']]
+        ]);
+
+        $internos = Internos::where('id', $request->id)->update([
+            //'num_vaga' => Internos::max('num_vaga') + 1,
+            'nome' => $request['nome'],
+            //'foto_url' => $request['foto_url'],
+            'data_entrada' => $data_entrada,
+            'data_saida' => $data_saida,
+            'motivo_saida' => $request->motivo_saida,
             'procedencia' => $request['procedencia'],
             'nascimento' => $nascimento,
             'naturalidade' => $request['naturalidade'],
