@@ -54,7 +54,6 @@ $(document).ready(()=>{
 
 	$('#nome').on('keyup', ()=>{
 		var url = $('#nome').attr('data-url');
-
 		if($('#nome').val().length > 3){
 			clearTimeout(timeout);
 
@@ -72,6 +71,7 @@ $(document).ready(()=>{
 				}
 				})
 				.done((msg)=>{
+					$('#js-create-userid-link').attr('href', url + '/internos/interno/' + msg.id);
 					$('#ajax-loader').hide();
 					$('#ajax-error-msg').hide();
 					var isEmpty = jQuery.isEmptyObject(msg);
