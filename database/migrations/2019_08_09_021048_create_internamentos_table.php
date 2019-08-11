@@ -18,6 +18,7 @@ class CreateInternamentosTable extends Migration
             $table->bigInteger('internos_id');
             $table->date('data_entrada');
             $table->date('data_saida');
+            $table->text('motivo_saida');
             $table->timestamps();
         });
     }
