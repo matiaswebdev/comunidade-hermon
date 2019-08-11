@@ -29,7 +29,7 @@
 						<div class="grid grid-2">
 						  <div>
 				      	  	<label for="data_entrada">D. Entrada</label>			      		
-						  	<input id="data_entrada" type="text" maxlength="10"  value="" name="data_entrada" required>
+						  	<input id="data_entrada" type="text" maxlength="10"  value="{{$interno['data_entrada']}}" name="data_entrada" required>
 						  	@if ($errors->first('data_entrada'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_entrada')}}
@@ -39,7 +39,7 @@
 				      	  
 				      	  <div>
 				      	  	<label for="data_saida">D. Saida</label>			      		
-						  	<input id="data_saida" type="text" maxlength="10"  name="data_saida"  disabled>
+						  	<input id="data_saida" type="text" maxlength="10" value="{{$interno['data_saida']}}"  name="data_saida">
 						  	 @if ($errors->first('data_saida'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_saida')}}
@@ -51,7 +51,7 @@
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="motivo_saida">Motivo da saida</label>		      		
-						  	<input id="motivo_saida" name="motivo_saida" type="text" value="" disabled>
+						  	<input id="motivo_saida" name="motivo_saida" type="text" value="{{$interno['motivo_saida']}}">
 						  	@if ($errors->first('motivo_saida'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('motivo_saida')}}
