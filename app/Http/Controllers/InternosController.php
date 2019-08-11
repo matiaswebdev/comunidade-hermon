@@ -277,7 +277,7 @@ class InternosController extends Controller
             //'foto_url' => $request['foto_url'],
             'data_entrada' => $data_entrada,
             'data_saida' => $data_saida,
-            'motivo_saida' => $request['motivo_saida'],
+            'motivo_saida' => '',
             'procedencia' => $request['procedencia'],
             'nascimento' => $nascimento,
             'naturalidade' => $request['naturalidade'],
