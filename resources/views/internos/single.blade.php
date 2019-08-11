@@ -24,7 +24,7 @@
 				<a class="saida-btn" href="{{url('/internos/saida/'. $interno['id'])}}"><button {{$saida_disabled}}>Registrar Saida</button></a>
 				<a class="saida-btn" href="{{url('/internos/edit/'. $interno['id'])}}"><button {{$entrada_disabled}}>Novo Internamento</button></a>
 				<a class="saida-btn" id="js-single-show-modal" href="#"><button {{$historico_disabled}}>Histórico</button></a>
-				<a class="saida-btn" id="" href="{{url('/internos/edit/'. $interno['id'])}}"><button >Editar</button></a>
+				<a class="saida-btn" id="" href="{{url('/internos/editall/'. $interno['id'])}}"><button >Editar</button></a>
 				<a class="saida-btn danger" id="js-single-show-excluir" href="#"><button disabled>Excluir registro</button></a>
 			</div>
 		</div>
