@@ -37,7 +37,7 @@
 				<div class="card-body">
 					<?php 
 						foreach ($internamentos as $internamento) {
-							echo  "Entrada: " . $internamento->data_entrada . "  Saída: " . $internamento->data_saida . "<br>";
+							echo  "Entrada: " . $internamento->data_entrada . "  Saída: " . $internamento->data_saida . "Motivo da saida: " . $internamento->motivo_saida ."<br>";
 						}
 					 ?>
 				</div>
