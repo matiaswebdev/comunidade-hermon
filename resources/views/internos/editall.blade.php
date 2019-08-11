@@ -113,7 +113,8 @@
 							</div>
 							@endif
 							<div class="error-msg" id="ajax-error-msg" style="display: none;">
-								Ja existe um cadastro com esse nome.
+								<!-- url para interno sera adicionada via js -->
+								Ja existe um cadastro com esse nome. <a href="" id="js-create-userid-link">Ver</a>
 							</div>
 				      	  </div>
 						</div>

@@ -102,7 +102,7 @@
 					  </li>
 						<div class="grid grid-1">
 						  <div>
-				      	  	<label for="nome">Nome</label>			      		
+				      	  	<label for="nome">Nome</label>		      		
 						  	<input id="nome" type="nome" data-url="{{url('/')}}" name="nome" value="{{old('nome')}}" autocomplete="off" required>
 						  	<div class="loader" id="ajax-loader" style="display: none;">Loading...</div>
 						  	@if ($errors->first('nome'))
@@ -111,7 +111,8 @@
 							</div>
 							@endif
 							<div class="error-msg" id="ajax-error-msg" style="display: none;">
-								Ja existe um cadastro com esse nome.
+								<!-- url para interno sera adicionada via js -->
+								Ja existe um cadastro com esse nome. <a href="" id="js-create-userid-link">Ver</a>
 							</div>
 				      	  </div>
 						</div>
