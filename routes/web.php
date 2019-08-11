@@ -39,6 +39,8 @@ Route::middleware(['auth'])->group( function () {
 		Route::post('/internos/saida/{id}', 'InternosController@saidaupdate')->name('internos.saidaupdate');
 		Route::get('/internos/edit/{id}', 'InternosController@edit')->name('internos.edit');
 		Route::post('/internos/update/{id}', 'InternosController@update')->name('internos.update');
+		Route::get('/internos/editall/{id}', 'InternosController@editall')->name('internos.editall');
+		Route::post('/internos/updateall/{id}', 'InternosController@updateall')->name('internos.updateall');
 	
 });
 
