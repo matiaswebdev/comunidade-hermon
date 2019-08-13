@@ -6,7 +6,7 @@
 @endsection
 
 @section('content') <!-- conteúdo principal -->
-
+	
 	<?php 
 		// Variáveis globais
 		$interno = $data['interno'];
@@ -27,6 +27,7 @@
 				<a class="saida-btn" id="" href="{{url('/internos/editall/'. $interno['id'])}}"><button >Editar</button></a>
 				<a class="saida-btn danger" id="js-single-show-excluir" href="#"><button disabled>Excluir registro</button></a>
 			</div>
+			@include('messages.flash-messages')
 		</div>
 		<!-- Fim Header -->
 		<!-- Histórico Modal -->

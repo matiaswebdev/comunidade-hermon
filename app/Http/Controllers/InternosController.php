@@ -129,7 +129,7 @@ class InternosController extends Controller
             'atendente' => $request['atendente']
         ]);
 
-        return redirect()->route('internos.interno', ['id' => $internos->id]);
+        return redirect()->route('internos.interno', ['id' => $internos->id])->with('success', 'Registro criado com sucesso!');
 
     }
 
@@ -174,7 +174,6 @@ class InternosController extends Controller
 
         $interno->atendente = \App\User::find($interno->atendente)->name;
 
-        
        return view('internos.single')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
@@ -378,7 +377,7 @@ class InternosController extends Controller
             'atendente' => $request['atendente']
         ]);
 
-        return redirect()->route('internos.interno', ['id' => $request->id]);
+        return redirect()->route('internos.interno', ['id' => $request->id])->with('success', 'Registro editado com sucesso!');
     }
 
     /**

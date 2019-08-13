@@ -192,3 +192,25 @@ $(document).ready(()=>{
 		$('#historico-modal').hide();
 	})
 })
+
+
+/*
+*
+*
+*
+*
+*
+* mostra modal histórico de internamentos na pagina single interno
+* 
+*
+*
+*
+*
+*/ 
+$(document).ready(()=>{
+	$('.msg').fadeIn(1500);
+	setTimeout(()=>{
+		$('.msg').fadeOut(1500);
+	}, 3000)
+	
+})
