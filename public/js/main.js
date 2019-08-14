@@ -63,7 +63,7 @@ $(document).ready(()=>{
 
 				$.ajax({
 				type: 'POST',
-				url: `${url}/internos/show`,
+				url: `${url}/internos/buscar`,
 				data : {search: nome},
 				beforeSend: () => {
 					$('#ajax-error-msg').hide();
