@@ -224,7 +224,7 @@ class InternosController extends Controller
 
         event(new SaidaDeInterno(Internos::find($request->id)));
 
-        return redirect()->route('internos.interno', ['id' => $request->id]);
+        return redirect()->route('internos.interno', ['id' => $request->id])->with('success', 'Saída registrada com sucesso!');
     }
 
 
@@ -324,7 +324,7 @@ class InternosController extends Controller
             'atendente' => $request['atendente']
         ]);
 
-        return redirect()->route('internos.interno', ['id' => $request->id]);
+        return redirect()->route('internos.interno', ['id' => $request->id])->with('success', 'Reentrada registrada com sucesso!');
     }
 
 
@@ -355,7 +355,7 @@ class InternosController extends Controller
 
         // Salva as alterações do registro.
         $internos = Internos::where('id', $request->id)->update([
-            
+
             'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
             'data_entrada' => $data_entrada,
