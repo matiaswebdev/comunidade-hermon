@@ -10,28 +10,7 @@ use App\Http\Requests\UpdateInternos;
 
 class InternosController extends Controller
 {
-    // /**
-    //  * Transforma data de 0000-00-00 para 00/00/0000
-    //  *
-    //  * @return transformed date
-    //  */
-    // private function date_transform_out($val) {
-    //     return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
-    // }
-
-
-    // /**
-    //  * Transforma data de 0000-00-00 para 00/00/0000
-    //  *
-    //  * @return transformed date
-    //  */
-    // private function date_transform_in($val) {
-    //     if(empty($val)){
-    //         return null;
-    //     }
-    //     return implode('-', array_reverse(explode('/', $val)));
-    // }
-
+    
 
     /**
      * Retorna página inicial da area de trabalho com uma listagem de internos
@@ -40,17 +19,11 @@ class InternosController extends Controller
      */
     public function index(Request $request)
     {
-        // Busca de internos com parametros.
-        $internos = Internos::where('nome', 'like', '%'.$request['busca'].'%')->orderby('nome')->paginate(15);
+        
+        $internos = Internos::where('nome', 'like', '%'.$request['busca'].'%')
+        ->orderby('nome')
+        ->paginate(15);
 
-        // transforma todas as datas dos registros em formato 00/00/0000
-        foreach ($internos as $interno) {
-            //$interno->data_entrada::createFromFormat('');
-            //$interno->data_saida = $this->date_transform_out($interno->data_saida);
-            //$interno->nascimento = $this->date_transform_out($interno->nascimento);
-        }
-
-        // retorna a view index do modulo internos com dados do usuario e interno
         return view('internos.index')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
@@ -67,14 +40,13 @@ class InternosController extends Controller
     {
         $user = \Auth::user();
         $next_num_vaga = Internos::max('num_vaga') + 1;
-        $data = [
+
+        return view('internos.create')->with('data', [
             'username' => $user->name,
             'userid' => $user->id,
             'next_num_vaga' => $next_num_vaga,
             'cargo' => 'Colaborador'
-        ];
-
-        return view('internos.create')->with('data', $data);
+        ]);
     }
 
     /**
@@ -86,12 +58,7 @@ class InternosController extends Controller
      */
     public function store(StoreInternos $request)
     {
-        // Transforma datas para o formato aceito para o banco de dados
-        //$data_entrada = $this->date_transform_in($request['data_entrada']);
-        //$data_saida = $this->date_transform_in($request['data_saida']);
-        //$nascimento = $this->date_transform_in($request['nascimento']);
-
-        // Codifica a lista de documentos para uma string json.
+    
         $documentosJSON = json_encode([
             ['docs_rg' => $request['docs_rg']],
             ['docs_cpf' => $request['docs_cpf']],
@@ -102,7 +69,6 @@ class InternosController extends Controller
             ['docs_c_nascimento' => $request['docs_c_nascimento']]
         ]);
 
-        // Armazena o registro no banco de dados
         $internos = Internos::create([
             'num_vaga' => Internos::max('num_vaga') + 1,
             'nome' => $request['nome'],
@@ -130,8 +96,8 @@ class InternosController extends Controller
             'atendente' => $request['atendente']
         ]);
 
-        // Após armazenamento redireciona para a rota interno/internos/ com id do interno recem criado.
-        return redirect()->route('internos.interno', ['id' => $internos->id])->with('success', 'Registro criado com sucesso!');
+        return redirect()->route('internos.interno', ['id' => $internos->id])
+        ->with('success', 'Registro criado com sucesso!');
 
     }
 
@@ -161,23 +127,13 @@ class InternosController extends Controller
     {
         
         $interno = Internos::find($request->id);
-        $internamentos = \App\Internamentos::where('internos_id', $request->id)->orderby('data_entrada')->get();
-        // transforma datas do banco para o fomato padrão brasileiro.
-        //$interno->data_entrada = $this->date_transform_out($interno->data_entrada);
-        //$interno->data_saida = $this->date_transform_out($interno->data_saida);
-        //$interno->nascimento = $this->date_transform_out($interno->nascimento);
-
-        // transforma datas de todos os registros de internamentos para o formato brasileiro
-        foreach ($internamentos as $internamento) {
-           // $internamento->data_entrada = $this->date_transform_out($internamento->data_entrada);
-           // $internamento->data_saida = $this->date_transform_out($internamento->data_saida);
-        }
-
-        // Converte json para string em array php.
+        $internamentos = \App\Internamentos::where('internos_id', $request->id)
+        ->orderby('data_entrada')
+        ->get();
+      
         $interno->documentos = json_decode($interno->documentos, true);
         $interno->atendente = \App\User::find($interno->atendente)->name;
 
-        // Retorna para view interno com dados do internamento e interno.
         return view('internos.single')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
@@ -195,11 +151,9 @@ class InternosController extends Controller
      */
     public function saidaform(Internos $internos, Request $request)
     {   
-        // busca o registro que irá ser alterado e altera o campo data para formata amigável.
-        $interno = Internos::find($request->id);
-        //$interno->data_entrada = $this->date_transform_out($interno->data_entrada);
 
-        // Retorna a view internos/saída
+        $interno = Internos::find($request->id);
+
         return view('internos.saida')->with('data', [
             'username' => \Auth::user()->name,
             'cargo' => 'Colaborador',
@@ -218,11 +172,11 @@ class InternosController extends Controller
     {
 
         $interno = Internos::find($request->id);
-        //$interno->data_saida = $this->date_transform_in($request->data_saida);
+        $interno->data_saida = $request->data_saida;
         $interno->motivo_saida = $request->motivo_saida;
         $interno->save();
 
-
+        // Grava o último internamento no histórico.
         event(new SaidaDeInterno(Internos::find($request->id)));
 
         return redirect()->route('internos.interno', ['id' => $request->id])->with('success', 'Saída registrada com sucesso!');
@@ -259,17 +213,14 @@ class InternosController extends Controller
     {
         $user = \Auth::user();
         $interno = $internos::find($request->id);
-        // Convert JSON string to Array
         $interno->documentos = json_decode($interno->documentos, true);
 
-        $data = [
+        return view('internos.editall')->with('data', [
             'username' => $user->name,
             'userid' => $user->id,
             'cargo' => 'Colaborador',
             'interno' => $interno
-        ];
-
-        return view('internos.editall')->with('data', $data);
+        ]);
     }
 
     /**
@@ -282,12 +233,6 @@ class InternosController extends Controller
     public function update(UpdateInternos $request, Internos $internos)
     {
 
-        //$data_entrada = $this->date_transform_in($request['data_entrada']);
-        //$data_saida = $this->date_transform_in($request['data_saida']);
-        //$nascimento = $this->date_transform_in($request['nascimento']);
-
-        
-
         $documentosJSON = json_encode([
             ['docs_rg' => $request['docs_rg']],
             ['docs_cpf' => $request['docs_cpf']],
@@ -298,12 +243,11 @@ class InternosController extends Controller
             ['docs_c_nascimento' => $request['docs_c_nascimento']]
         ]);
 
-        $internos = Internos::where('id', $request->id)->update([
-            //'num_vaga' => Internos::max('num_vaga') + 1,
+        $internos = Internos::find($request->id)->update([
             'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
             'data_entrada' => $request['data_entrada'],
-            'data_saida' => NULL,
+            'data_saida' => null,
             'motivo_saida' => '',
             'procedencia' => $request['procedencia'],
             'nascimento' => $request['nascimento'],
@@ -338,12 +282,7 @@ class InternosController extends Controller
      */
     public function updateall(UpdateInternos $request, Internos $internos)
     {
-        // Transforma datas para o padrão do mysql
-        // $data_entrada = $this->date_transform_in($request['data_entrada']);
-        // $data_saida = $this->date_transform_in($request['data_saida']);
-        // $nascimento = $this->date_transform_in($request['nascimento']);
-
-        // Transforma dados em uma string json.
+        
         $documentosJSON = json_encode([
             ['docs_rg' => $request['docs_rg']],
             ['docs_cpf' => $request['docs_cpf']],
@@ -355,7 +294,7 @@ class InternosController extends Controller
         ]);
 
         // Salva as alterações do registro.
-        $internos = Internos::where('id', $request->id)->update([
+        $internos = Internos::find($request->id)->update([
 
             'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],

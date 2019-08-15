@@ -39,7 +39,7 @@
 				      	  
 				      	  <div>
 				      	  	<label for="data_saida">D. Saida</label>			      		
-						  	<input id="data_saida" type="text" maxlength="10"  name="data_saida"  disabled>
+						  	<input id="data_saida" type="text" maxlength="10" value=""  name="data_saida"  disabled>
 						  	 @if ($errors->first('data_saida'))
 				      	  	<div class="error-msg">
 								{{ $errors->first('data_saida')}}

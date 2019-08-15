@@ -16,7 +16,7 @@ class Internos extends Model
      * @var array
      */
     protected $dates = [
-        'data_entrada', 'data_saida', 'nascimento'
+       'data_saida', 'data_entrada', 'nascimento'
     ];
 	
     protected $fillable = [
@@ -45,15 +45,27 @@ class Internos extends Model
      * @param  string  $value
      * @return string
      */
-    public function getDataEntradaAttribute($value){ return Carbon::parse($value)->format('d/m/Y'); }
+    public function getDataEntradaAttribute($value)
+    { 
+        if(is_null($value)){
+            return null;
+        }else{
+            return Carbon::parse($value)->format('d/m/Y'); 
+        }
+    }
 
     /**
      * Set the internos's data_entrada.
      * @return string
      */
     public function setDataEntradaAttribute($value)
-    {
-        $this->attributes['data_entrada'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
+    {   
+    
+        if(is_null($value)){
+            $this->attributes['data_entrada'] = null;
+        } else {
+            $this->attributes['data_entrada'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
+        }
     }
 
      /**
@@ -62,14 +74,21 @@ class Internos extends Model
      * @param  string  $value
      * @return string
      */
-    public function getDataSaidaAttribute($value){ return Carbon::parse($value)->format('d/m/Y'); }
+    public function getDataSaidaAttribute($value){
+        if(is_null($value)){
+            return null;
+        }else{
+            return Carbon::parse($value)->format('d/m/Y'); 
+        }
+    }
 
     /**
      * Set the internos's data_entrada.
      * @return string
      */
     public function setDataSaidaAttribute($value)
-    {
+    {   
+
         if(is_null($value)){
             $this->attributes['data_saida'] = null;
         } else {
@@ -83,7 +102,14 @@ class Internos extends Model
      * @param  string  $value
      * @return string
      */
-    public function getNascimentoAttribute($value){ return Carbon::parse($value)->format('d/m/Y'); }
+    public function getNascimentoAttribute($value)
+    {
+        if(is_null($value)){
+            return null;
+        }else{
+            return Carbon::parse($value)->format('d/m/Y'); 
+        }
+    }
 
     /**
      * Set the internos's data_entrada.
@@ -91,7 +117,11 @@ class Internos extends Model
      */
     public function setNascimentoAttribute($value)
     {
-        $this->attributes['nascimento'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
+        if(is_null($value)){
+            $this->attributes['nascimento'] = null;
+        } else {
+            $this->attributes['nascimento'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
+        }
     }
 
 
