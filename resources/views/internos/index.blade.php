@@ -40,7 +40,7 @@
     @foreach ($data['internos'] as $interno)
     <div class="row">
       <div class="cell" data-title="nome">
-        <a class="css-nome" href="/internos/interno/{{$interno['id']}}">{{ucfirst($interno['nome'])}}</a>
+        <a class="css-nome" href="/internos/interno/{{$interno['id']}}">{{$interno['nome']}}</a>
       </div>
       <div class="cell" data-title="data_entrada">
         {{$interno['data_entrada']}}

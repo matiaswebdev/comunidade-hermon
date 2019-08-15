@@ -10,27 +10,27 @@ use App\Http\Requests\UpdateInternos;
 
 class InternosController extends Controller
 {
-    /**
-     * Transforma data de 0000-00-00 para 00/00/0000
-     *
-     * @return transformed date
-     */
-    private function date_transform_out($val) {
-        return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
-    }
+    // /**
+    //  * Transforma data de 0000-00-00 para 00/00/0000
+    //  *
+    //  * @return transformed date
+    //  */
+    // private function date_transform_out($val) {
+    //     return (empty($val)) ?  null : implode('/', array_reverse(explode('-', $val)));
+    // }
 
 
-    /**
-     * Transforma data de 0000-00-00 para 00/00/0000
-     *
-     * @return transformed date
-     */
-    private function date_transform_in($val) {
-        if(empty($val)){
-            return null;
-        }
-        return implode('-', array_reverse(explode('/', $val)));
-    }
+    // /**
+    //  * Transforma data de 0000-00-00 para 00/00/0000
+    //  *
+    //  * @return transformed date
+    //  */
+    // private function date_transform_in($val) {
+    //     if(empty($val)){
+    //         return null;
+    //     }
+    //     return implode('-', array_reverse(explode('/', $val)));
+    // }
 
 
     /**
@@ -45,9 +45,9 @@ class InternosController extends Controller
 
         // transforma todas as datas dos registros em formato 00/00/0000
         foreach ($internos as $interno) {
-            $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
-            $interno->data_saida = $this->date_transform_out($interno->data_saida);
-            $interno->nascimento = $this->date_transform_out($interno->nascimento);
+            //$interno->data_entrada::createFromFormat('');
+            //$interno->data_saida = $this->date_transform_out($interno->data_saida);
+            //$interno->nascimento = $this->date_transform_out($interno->nascimento);
         }
 
         // retorna a view index do modulo internos com dados do usuario e interno
@@ -87,9 +87,9 @@ class InternosController extends Controller
     public function store(StoreInternos $request)
     {
         // Transforma datas para o formato aceito para o banco de dados
-        $data_entrada = $this->date_transform_in($request['data_entrada']);
-        $data_saida = $this->date_transform_in($request['data_saida']);
-        $nascimento = $this->date_transform_in($request['nascimento']);
+        //$data_entrada = $this->date_transform_in($request['data_entrada']);
+        //$data_saida = $this->date_transform_in($request['data_saida']);
+        //$nascimento = $this->date_transform_in($request['nascimento']);
 
         // Codifica a lista de documentos para uma string json.
         $documentosJSON = json_encode([
@@ -107,11 +107,11 @@ class InternosController extends Controller
             'num_vaga' => Internos::max('num_vaga') + 1,
             'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
-            'data_entrada' => $data_entrada,
-            'data_saida' => $data_saida,
+            'data_entrada' => $request['data_entrada'],
+            'data_saida' => $request['data_saida'],
             'motivo_saida' => $request['motivo_saida'],
             'procedencia' => $request['procedencia'],
-            'nascimento' => $nascimento,
+            'nascimento' => $request['nascimento'],
             'naturalidade' => $request['naturalidade'],
             'rg' => $request['rg'],
             'cpf' => $request['cpf'],
@@ -163,14 +163,14 @@ class InternosController extends Controller
         $interno = Internos::find($request->id);
         $internamentos = \App\Internamentos::where('internos_id', $request->id)->orderby('data_entrada')->get();
         // transforma datas do banco para o fomato padrão brasileiro.
-        $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
-        $interno->data_saida = $this->date_transform_out($interno->data_saida);
-        $interno->nascimento = $this->date_transform_out($interno->nascimento);
+        //$interno->data_entrada = $this->date_transform_out($interno->data_entrada);
+        //$interno->data_saida = $this->date_transform_out($interno->data_saida);
+        //$interno->nascimento = $this->date_transform_out($interno->nascimento);
 
         // transforma datas de todos os registros de internamentos para o formato brasileiro
         foreach ($internamentos as $internamento) {
-            $internamento->data_entrada = $this->date_transform_out($internamento->data_entrada);
-            $internamento->data_saida = $this->date_transform_out($internamento->data_saida);
+           // $internamento->data_entrada = $this->date_transform_out($internamento->data_entrada);
+           // $internamento->data_saida = $this->date_transform_out($internamento->data_saida);
         }
 
         // Converte json para string em array php.
@@ -197,7 +197,7 @@ class InternosController extends Controller
     {   
         // busca o registro que irá ser alterado e altera o campo data para formata amigável.
         $interno = Internos::find($request->id);
-        $interno->data_entrada = $this->date_transform_out($interno->data_entrada);
+        //$interno->data_entrada = $this->date_transform_out($interno->data_entrada);
 
         // Retorna a view internos/saída
         return view('internos.saida')->with('data', [
@@ -216,8 +216,9 @@ class InternosController extends Controller
      */
     public function saidaupdate(Internos $internos, Request $request)
     {
+
         $interno = Internos::find($request->id);
-        $interno->data_saida = $this->date_transform_in($request->data_saida);
+        //$interno->data_saida = $this->date_transform_in($request->data_saida);
         $interno->motivo_saida = $request->motivo_saida;
         $interno->save();
 
@@ -281,9 +282,9 @@ class InternosController extends Controller
     public function update(UpdateInternos $request, Internos $internos)
     {
 
-        $data_entrada = $this->date_transform_in($request['data_entrada']);
-        $data_saida = $this->date_transform_in($request['data_saida']);
-        $nascimento = $this->date_transform_in($request['nascimento']);
+        //$data_entrada = $this->date_transform_in($request['data_entrada']);
+        //$data_saida = $this->date_transform_in($request['data_saida']);
+        //$nascimento = $this->date_transform_in($request['nascimento']);
 
         
 
@@ -301,11 +302,11 @@ class InternosController extends Controller
             //'num_vaga' => Internos::max('num_vaga') + 1,
             'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
-            'data_entrada' => $data_entrada,
-            'data_saida' => $data_saida,
+            'data_entrada' => $request['data_entrada'],
+            'data_saida' => NULL,
             'motivo_saida' => '',
             'procedencia' => $request['procedencia'],
-            'nascimento' => $nascimento,
+            'nascimento' => $request['nascimento'],
             'naturalidade' => $request['naturalidade'],
             'rg' => $request['rg'],
             'cpf' => $request['cpf'],
@@ -338,9 +339,9 @@ class InternosController extends Controller
     public function updateall(UpdateInternos $request, Internos $internos)
     {
         // Transforma datas para o padrão do mysql
-        $data_entrada = $this->date_transform_in($request['data_entrada']);
-        $data_saida = $this->date_transform_in($request['data_saida']);
-        $nascimento = $this->date_transform_in($request['nascimento']);
+        // $data_entrada = $this->date_transform_in($request['data_entrada']);
+        // $data_saida = $this->date_transform_in($request['data_saida']);
+        // $nascimento = $this->date_transform_in($request['nascimento']);
 
         // Transforma dados em uma string json.
         $documentosJSON = json_encode([
@@ -358,11 +359,11 @@ class InternosController extends Controller
 
             'nome' => $request['nome'],
             //'foto_url' => $request['foto_url'],
-            'data_entrada' => $data_entrada,
-            'data_saida' => $data_saida,
+            'data_entrada' => $request['data_entrada'],
+            'data_saida' => $request['data_saida'],
             'motivo_saida' => $request->motivo_saida,
             'procedencia' => $request['procedencia'],
-            'nascimento' => $nascimento,
+            'nascimento' => $request['nascimento'],
             'naturalidade' => $request['naturalidade'],
             'rg' => $request['rg'],
             'cpf' => $request['cpf'],

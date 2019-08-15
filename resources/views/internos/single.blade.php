@@ -83,7 +83,7 @@
 					<div class="grid grid-1">
 					  <div>
 			      	  	<label for="nome">Nome</label>			      		
-					  	<input id="nome" type="nome" name="nome" value="{{ucfirst($interno['nome'])}}" readonly>
+					  	<input id="nome" type="nome" name="nome" value="{{$interno['nome']}}" readonly>
 			      	  </div>
 					</div>	
 					<div class="grid grid-2">

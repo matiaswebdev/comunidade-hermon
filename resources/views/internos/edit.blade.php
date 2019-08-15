@@ -105,7 +105,7 @@
 						<div class="grid grid-1">
 						  <div>
 				      	  	<label for="nome">Nome</label>			      		
-						  	<input id="nome" type="nome" data-url="{{url('/')}}" name="nome" value="{{ucfirst($interno['nome'])}}" autocomplete="off" required>
+						  	<input id="nome" type="nome" data-url="{{url('/')}}" name="nome" value="{{$interno['nome']}}" autocomplete="off" required>
 						  	<div class="loader" id="ajax-loader" style="display: none;">Loading...</div>
 						  	@if ($errors->first('nome'))
 				      	  	<div class="error-msg">
