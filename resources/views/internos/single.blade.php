@@ -6,7 +6,6 @@
 @endsection
 
 @section('content') <!-- conteúdo principal -->
-	
 	<?php 
 		// Variáveis globais
 		$interno = $data['interno'];
@@ -157,27 +156,28 @@
 			      </li>
 			      <li>
 			      	<div class="grid grid-1">
+			      	  <?php $documentos = $interno['documentos']; ?>
 			      	  <div class="document-selectors fancy">
 			      	  	<label for="">RG</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][0]['docs_rg']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('rg', $documentos)){echo "checked";} ?>>
 
 			      	  	<label for="docs_cpf">CPF</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][1]['docs_cpf']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('cpf', $documentos)){echo "checked";} ?>>
 
 			      	  	<label for="docs_titulo">TITULO</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][2]['docs_titulo']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('titulo', $documentos)){echo "checked";} ?>>
 
 			      	  	<label for="docs_cnh">CNH</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][3]['docs_cnh']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('cnh', $documentos)){echo "checked";} ?>>
 
 			      	  	<label for="docs_ctps">CTPS</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][4]['docs_ctps']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('ctps', $documentos)){echo "checked";} ?>>
 
 			      	  	<label for="docs_reservista">RESERVISTA</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][5]['docs_reservista']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('reservista', $documentos)){echo "checked";} ?>>
 
 			      	  	<label for="docs_c_nascimento">CERT. NASCIMENTO</label>
-			      	  	<input type="checkbox" <?php if($interno['documentos'][6]['docs_c_nascimento']){echo "checked";} ?>>
+			      	  	<input type="checkbox" <?php if(in_array('nascimento', $documentos)){echo "checked";} ?>>
 			      	  </div>  		
 			      	</div>
 
