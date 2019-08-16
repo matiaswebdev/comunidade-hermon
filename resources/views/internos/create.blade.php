@@ -308,25 +308,25 @@
 				      	<div class="grid grid-1">
 				      	  <div class="document-selectors fancy">
 				      	  	<label for="docs_rg">RG</label>
-				      	  	<input type="checkbox" <?php if(old('docs_rg')){echo "checked";} ?> name="docs_rg" id="docs_rg">
+				      	  	<input type="checkbox" name="documentos[]" value="rg" id="docs_rg" <?php if(old('documentos') != null){if(in_array('rg', old('documentos'))){echo 'checked';}} ?> >
 
 				      	  	<label for="docs_cpf">CPF</label>
-				      	  	<input type="checkbox" <?php if(old('docs_cpf')){echo "checked";} ?> name="docs_cpf" id="docs_cpf">
+				      	  	<input type="checkbox" name="documentos[]" value="cpf" id="docs_cpf" <?php if(old('documentos') != null){if(in_array('cpf', old('documentos'))){echo 'checked';}} ?>>
 
 				      	  	<label for="docs_titulo">TITULO</label>
-				      	  	<input type="checkbox" <?php if(old('docs_titulo')){echo "checked";} ?> name="docs_titulo" id="docs_titulo">
+				      	  	<input type="checkbox" name="documentos[]" value="titulo" id="docs_titulo" <?php if(old('documentos') != null){if(in_array('titulo', old('documentos'))){echo 'checked';}} ?>>
 
 				      	  	<label for="docs_cnh">CNH</label>
-				      	  	<input type="checkbox" <?php if(old('docs_cnh')){echo "checked";} ?> name="docs_cnh" id="docs_cnh">
+				      	  	<input type="checkbox" name="documentos[]" value="cnh" name="docs_cnh" id="docs_cnh" <?php if(old('documentos') != null){if(in_array('cnh', old('documentos'))){echo 'checked';}} ?>>
 
 				      	  	<label for="docs_ctps">CTPS</label>
-				      	  	<input type="checkbox" <?php if(old('docs_ctps')){echo "checked";} ?> name="docs_ctps" id="docs_ctps">
+				      	  	<input type="checkbox" name="documentos[]" value="ctps" id="docs_ctps" <?php if(old('documentos') != null){if(in_array('ctps', old('documentos'))){echo 'checked';}} ?>>
 
 				      	  	<label for="docs_reservista">RESERVISTA</label>
-				      	  	<input type="checkbox" <?php if(old('docs_reservista')){echo "checked";} ?> name="docs_reservista" id="docs_reservista">
+				      	  	<input type="checkbox" name="documentos[]" value="reservista" name="docs_reservista" id="docs_reservista" <?php if(old('documentos') != null){if(in_array('reservista', old('documentos'))){echo 'checked';}} ?>>
 
 				      	  	<label for="docs_c_nascimento">CERT. NASCIMENTO</label>
-				      	  	<input type="checkbox" <?php if(old('docs_c_nascimento')){echo "checked";} ?> name="docs_c_nascimento" id="docs_c_nascimento">
+				      	  	<input type="checkbox" name="documentos[]" value="nascimento" id="docs_c_nascimento" <?php if(old('documentos') != null){if(in_array('nascimento', old('documentos'))){echo 'checked';}} ?>>
 
 
 				      	  </div>  		
