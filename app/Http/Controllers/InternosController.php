@@ -59,42 +59,8 @@ class InternosController extends Controller
     public function store(StoreInternos $request)
     {
     
-        $documentosJSON = json_encode([
-            ['docs_rg' => $request['docs_rg']],
-            ['docs_cpf' => $request['docs_cpf']],
-            ['docs_titulo' => $request['docs_titulo']],
-            ['docs_cnh' => $request['docs_cnh']],
-            ['docs_ctps' => $request['docs_ctps']],
-            ['docs_reservista' => $request['docs_reservista']],
-            ['docs_c_nascimento' => $request['docs_c_nascimento']]
-        ]);
-
-        $internos = Internos::create([
-            'num_vaga' => Internos::max('num_vaga') + 1,
-            'nome' => $request['nome'],
-            //'foto_url' => $request['foto_url'],
-            'data_entrada' => $request['data_entrada'],
-            'data_saida' => $request['data_saida'],
-            'motivo_saida' => $request['motivo_saida'],
-            'procedencia' => $request['procedencia'],
-            'nascimento' => $request['nascimento'],
-            'naturalidade' => $request['naturalidade'],
-            'rg' => $request['rg'],
-            'cpf' => $request['cpf'],
-            'nome_pai' => $request['nome_pai'],
-            'nome_mae' => $request['nome_mae'],
-            'estado_civil' => $request['estado_civil'],
-            'grau_instrucao' => $request['grau_instrucao'],
-            'pendencia_judicial' => $request['pendencia_judicial'],
-            'motivo_acolhimento' => $request['motivo_acolhimento'],
-            'tratamento_medico' => $request['tratamento_medico'],
-            'profissao' => $request['profissao'],
-            'internamento_anterior' => $request['internamento_anterior'],
-            'documentos' => $documentosJSON,
-            'contato' => $request['contato'],
-            'beneficios' => $request['beneficios'],
-            'atendente' => $request['atendente']
-        ]);
+        $internos = new Internos();
+        $internos->fill($request->all())->save();
 
         return redirect()->route('internos.interno', ['id' => $internos->id])
         ->with('success', 'Registro criado com sucesso!');
@@ -130,8 +96,7 @@ class InternosController extends Controller
         $internamentos = \App\Internamentos::where('internos_id', $request->id)
         ->orderby('data_entrada')
         ->get();
-      
-        $interno->documentos = json_decode($interno->documentos, true);
+        
         $interno->atendente = \App\User::find($interno->atendente)->name;
 
         return view('internos.single')->with('data', [
@@ -193,7 +158,6 @@ class InternosController extends Controller
     {
         $user = \Auth::user();
         $interno = $internos::find($request->id);
-        $interno->documentos = json_decode($interno->documentos, true);
 
         return view('internos.edit')->with('data', [
             'username' => $user->name,
@@ -213,7 +177,6 @@ class InternosController extends Controller
     {
         $user = \Auth::user();
         $interno = $internos::find($request->id);
-        $interno->documentos = json_decode($interno->documentos, true);
 
         return view('internos.editall')->with('data', [
             'username' => $user->name,
@@ -233,41 +196,7 @@ class InternosController extends Controller
     public function update(UpdateInternos $request, Internos $internos)
     {
 
-        $documentosJSON = json_encode([
-            ['docs_rg' => $request['docs_rg']],
-            ['docs_cpf' => $request['docs_cpf']],
-            ['docs_titulo' => $request['docs_titulo']],
-            ['docs_cnh' => $request['docs_cnh']],
-            ['docs_ctps' => $request['docs_ctps']],
-            ['docs_reservista' => $request['docs_reservista']],
-            ['docs_c_nascimento' => $request['docs_c_nascimento']]
-        ]);
-
-        $internos = Internos::find($request->id)->update([
-            'nome' => $request['nome'],
-            //'foto_url' => $request['foto_url'],
-            'data_entrada' => $request['data_entrada'],
-            'data_saida' => null,
-            'motivo_saida' => '',
-            'procedencia' => $request['procedencia'],
-            'nascimento' => $request['nascimento'],
-            'naturalidade' => $request['naturalidade'],
-            'rg' => $request['rg'],
-            'cpf' => $request['cpf'],
-            'nome_pai' => $request['nome_pai'],
-            'nome_mae' => $request['nome_mae'],
-            'estado_civil' => $request['estado_civil'],
-            'grau_instrucao' => $request['grau_instrucao'],
-            'pendencia_judicial' => $request['pendencia_judicial'],
-            'motivo_acolhimento' => $request['motivo_acolhimento'],
-            'tratamento_medico' => $request['tratamento_medico'],
-            'profissao' => $request['profissao'],
-            'internamento_anterior' => $request['internamento_anterior'],
-            'documentos' => $documentosJSON,
-            'contato' => $request['contato'],
-            'beneficios' => $request['beneficios'],
-            'atendente' => $request['atendente']
-        ]);
+        $internos = Internos::find($request->id)->update($request->all());
 
         return redirect()->route('internos.interno', ['id' => $request->id])->with('success', 'Reentrada registrada com sucesso!');
     }
@@ -283,45 +212,11 @@ class InternosController extends Controller
     public function updateall(UpdateInternos $request, Internos $internos)
     {
         
-        $documentosJSON = json_encode([
-            ['docs_rg' => $request['docs_rg']],
-            ['docs_cpf' => $request['docs_cpf']],
-            ['docs_titulo' => $request['docs_titulo']],
-            ['docs_cnh' => $request['docs_cnh']],
-            ['docs_ctps' => $request['docs_ctps']],
-            ['docs_reservista' => $request['docs_reservista']],
-            ['docs_c_nascimento' => $request['docs_c_nascimento']]
-        ]);
-
         // Salva as alterações do registro.
-        $internos = Internos::find($request->id)->update([
+        $internos = Internos::find($request->id)->update($request->all());
 
-            'nome' => $request['nome'],
-            //'foto_url' => $request['foto_url'],
-            'data_entrada' => $request['data_entrada'],
-            'data_saida' => $request['data_saida'],
-            'motivo_saida' => $request->motivo_saida,
-            'procedencia' => $request['procedencia'],
-            'nascimento' => $request['nascimento'],
-            'naturalidade' => $request['naturalidade'],
-            'rg' => $request['rg'],
-            'cpf' => $request['cpf'],
-            'nome_pai' => $request['nome_pai'],
-            'nome_mae' => $request['nome_mae'],
-            'estado_civil' => $request['estado_civil'],
-            'grau_instrucao' => $request['grau_instrucao'],
-            'pendencia_judicial' => $request['pendencia_judicial'],
-            'motivo_acolhimento' => $request['motivo_acolhimento'],
-            'tratamento_medico' => $request['tratamento_medico'],
-            'profissao' => $request['profissao'],
-            'internamento_anterior' => $request['internamento_anterior'],
-            'documentos' => $documentosJSON,
-            'contato' => $request['contato'],
-            'beneficios' => $request['beneficios'],
-            'atendente' => $request['atendente']
-        ]);
-
-        return redirect()->route('internos.interno', ['id' => $request->id])->with('success', 'Registro editado com sucesso!');
+        return redirect()->route('internos.interno', ['id' => $request->id])
+        ->with('success', 'Registro editado com sucesso!');
     }
 
     /**
