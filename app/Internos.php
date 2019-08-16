@@ -10,6 +10,15 @@ class Internos extends Model
 {
 	use SoftDeletes;
 
+    /**
+     * The attributes that should be cast to native types.
+     *
+     * @var array
+     */
+    protected $casts = [
+        'documentos' => 'array',
+    ];
+
 	/**
      * The attributes that should be mutated to dates.
      *
@@ -23,8 +32,7 @@ class Internos extends Model
     	'num_vaga', 'nome', 'data_entrada', 'data_saida', 'motivo_saida', 'procedencia',
     	'nascimento', 'naturalidade', 'rg', 'cpf', 'nome_pai', 'nome_mae', 'estado_civil',
     	'grau_instrucao', 'pendencia_judicial', 'motivo_acolhimento', 'tratamento_medico',
-    	'profissao', 'internamento_anterior', 'documentos', 'docs_rg', 'docs_cpf', 'docs_titulo', 'docs_cnh',
-    	'docs_ctps', 'docs_reservista', 'docs_c_nascimento', 'contato', 'beneficios', 'atendente'
+    	'profissao', 'internamento_anterior', 'documentos', 'contato', 'beneficios', 'atendente'
     ];
 
 
@@ -88,7 +96,7 @@ class Internos extends Model
      */
     public function setDataSaidaAttribute($value)
     {   
-
+        
         if(is_null($value)){
             $this->attributes['data_saida'] = null;
         } else {
@@ -122,6 +130,17 @@ class Internos extends Model
         } else {
             $this->attributes['nascimento'] = Carbon::createFromFormat('d/m/Y', $value)->toDateString();
         }
+    }
+
+
+    /**
+     * Set the internos's data_entrada.
+     * @return string
+     */
+    public function setNumVagaAttribute($value)
+    {   
+        $value = $this->max('num_vaga') + 1;
+        $this->attributes['num_vaga'] = $value;
     }
 
 
