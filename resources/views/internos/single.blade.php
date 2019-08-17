@@ -35,11 +35,26 @@
 				<div class="card-close" id="close">Fechar</div>
 				<div class="card-header"><h2>Histórico</h2></div>
 				<div class="card-body">
-					<?php 
-						foreach ($internamentos as $internamento) {
-							echo  "Entrada: " . $internamento->data_entrada . "  Saída: " . $internamento->data_saida . " Motivo da saida: " . $internamento->motivo_saida ."<br>";
-						}
-					 ?>
+					
+<table class="zui-table">
+    <thead>
+        <tr>
+            <th>Entrada</th>
+            <th>Saída</th>
+            <th>Motivo da Saída</th>
+        </tr>
+    </thead>
+
+    <tbody>
+		@foreach ($internamentos as $internamento)		 
+        <tr>
+            <td>{{ $internamento->data_entrada }}</td>
+            <td>{{ $internamento->data_saida }}</td>
+            <td>{{ $internamento->motivo_saida }}</td>
+        </tr>
+        @endforeach
+    </tbody>
+</table>
 				</div>
 			</div>
 		</div>
