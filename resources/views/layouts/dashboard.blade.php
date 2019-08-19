@@ -50,7 +50,7 @@
                     </li>
                     <li id="usuarios"><a href="#">Usuários</a>
                         <ul>
-                            <li><a href="#">teste</a></li>
+                            <li><a href="{{route('usuarios.registrar')}}">Registrar</a></li>
                         </ul>
                     </li>
                     <li id="restricoes"><a href="#">Restrições</a>

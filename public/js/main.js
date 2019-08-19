@@ -115,20 +115,33 @@ $('#internos').click((ev)=>{
 	$('#internos').toggleClass('selected');
 });
 
+
+if(actual_location === 'usuarios'){
+	$('#usuarios').addClass('selected');
+}
+
 $('#usuarios').click((ev)=>{
-	ev.preventDefault();
 	$('#usuarios').toggleClass('selected');
 });
 
+if(actual_location === 'restricoes'){
+	$('#restricoes').addClass('selected');
+}
 $('#restricoes').click((ev)=>{
-	ev.preventDefault();
 	$('#restricoes').toggleClass('selected');
 });
 
+if(actual_location === 'relatorios'){
+	$('#relatorios').addClass('selected');
+}
+
 $('#relatorios').click((ev)=>{
-	ev.preventDefault();
 	$('#relatorios').toggleClass('selected');
 });
+
+if(actual_location === 'relatorios'){
+	$('#relatorios').addClass('selected');
+}
 
 $('#suporte').click((ev)=>{
 	ev.preventDefault();

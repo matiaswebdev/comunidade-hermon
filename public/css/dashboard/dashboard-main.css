@@ -184,6 +184,16 @@ body {
   padding: 1em;
 }
 
+.main-content h1{
+	margin-bottom: 3em;
+}
+
+.main-content p span {
+	color: #ffe981;
+	font-weight: 500;
+	text-transform: uppercase;
+}
+
 
 
 
