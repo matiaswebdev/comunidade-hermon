@@ -22,6 +22,7 @@ class CreateUsersTable extends Migration
             $table->rememberToken();
             $table->integer('nivel')->nullable();
             $table->boolean('ativo')->nullable();
+            $table->enum('cargo', ['diretor', 'suporte', 'colaborador'])->nullable();
             $table->timestamps();
         });
     }
