@@ -45,9 +45,10 @@ Route::middleware(['auth'])->group( function () {
 });
 
 
-// Rotas para internamentos
-Route::middleware(['auth'])->group( function () {		
-		//Route::post('/internamentos/create', 'InternamentosController@store')->name('internos.store');
+// Rotas para usuario
+Route::middleware(['auth'])->group( function () {
+	Route::get('/usuarios/registrar', 'Auth\RegisterController@showRegistrationForm')->name('usuarios.registrar');
+
 });
 
 
