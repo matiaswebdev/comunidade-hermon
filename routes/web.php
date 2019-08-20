@@ -46,14 +46,11 @@ Route::middleware(['auth'])->group( function () {
 
 
 // Rotas para usuario
-// Route::get('/usuarios/login', 'Auth\LoginController@showLoginForm')->name('login');
-// Route::post('/usuarios/login', 'Auth\LoginController@login');
-// Route::post('/usuarios/logout', 'Auth\LoginController@logout')->name('logout');
+Route::get('/usuarios/login', 'Auth\LoginController@showLoginForm')->name('login');
+Route::post('/usuarios/login', 'Auth\LoginController@login');
+Route::post('/usuarios/logout', 'Auth\LoginController@logout')->name('logout');
 Route::middleware(['auth'])->group( function () {
+	 Route::get('/usuarios', 'UsuarioController@usuarios')->name('usuarios');
 	 Route::get('/usuarios/registrar', 'UsuarioController@showRegistrationForm')->name('usuarios.registrar');
 	 Route::post('/usuarios/registrar', 'UsuarioController@store')->name('usuarios.store');
 });
-
-
-
-
