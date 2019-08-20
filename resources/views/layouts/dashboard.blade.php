@@ -50,6 +50,9 @@
                     </li>
                     <li id="usuarios"><a href="#">Usuários</a>
                         <ul>
+                            <li><a href="{{route('usuarios')}}">Procurar</a></li>
+                        </ul>
+                        <ul>
                             <li><a href="{{route('usuarios.registrar')}}">Registrar</a></li>
                         </ul>
                     </li>
