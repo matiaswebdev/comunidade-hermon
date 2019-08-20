@@ -21,14 +21,14 @@ class UsuarioController extends Controller
 	 }
 
 
-	 public function internos(Request $request) {
+	 public function usuarios(Request $request) {
 	 	$data = [
 	 		'username' => \Auth::user()->name,
 	 		'cargo' => 'Colaborador',
-	 		'internos' => \App\User::where('name', 'like', '%'.$request['busca'].'%')->get()
+	 		'usuarios' => \App\User::where('name', 'like', '%'.$request['busca'].'%')->paginate(3)
 	 	];
 
-	 	return view('user.dashboard')->with('data', $data);
+	 	return view('user.usuarios')->with('data', $data);
 	 }
 
 	 public function showRegistrationForm() {
