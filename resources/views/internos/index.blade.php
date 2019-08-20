@@ -14,7 +14,7 @@
 				    <input name="busca" type="text" placeholder="Buscar internos"></input>
 				    <button type="submit" ><i class="icon ion-android-arrow-forward">></i></button>
 				  </div>
-            </form>		
+      </form>		
 		</div>
 			@if (count($data['internos']) > 0)
 
