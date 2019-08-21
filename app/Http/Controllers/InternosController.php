@@ -24,11 +24,7 @@ class InternosController extends Controller
         ->orderby('nome')
         ->paginate(15);
 
-        return view('internos.index')->with('data', [
-            'username' => \Auth::user()->name,
-            'cargo' => 'Colaborador',
-            'internos' => $internos
-        ]);
+        return view('internos.index')->with('data', ['internos' => $internos ]);
     }
 
     /**
@@ -38,14 +34,11 @@ class InternosController extends Controller
      */
     public function create()
     {
-        $user = \Auth::user();
         $next_num_vaga = Internos::max('num_vaga') + 1;
 
         return view('internos.create')->with('data', [
-            'username' => $user->name,
-            'userid' => $user->id,
             'next_num_vaga' => $next_num_vaga,
-            'cargo' => 'Colaborador'
+            'cargo' => $user->nivel
         ]);
     }
 
@@ -96,12 +89,9 @@ class InternosController extends Controller
         $internamentos = \App\Internamentos::where('internos_id', $request->id)
         ->orderby('data_entrada')
         ->get();
-        
         $interno->atendente = \App\User::find($interno->atendente)->name;
 
         return view('internos.single')->with('data', [
-            'username' => \Auth::user()->name,
-            'cargo' => 'Colaborador',
             'interno' => $interno,
             'internamentos' => $internamentos
         ]);
@@ -120,8 +110,6 @@ class InternosController extends Controller
         $interno = Internos::find($request->id);
 
         return view('internos.saida')->with('data', [
-            'username' => \Auth::user()->name,
-            'cargo' => 'Colaborador',
             'interno' => $interno
         ]);
     }
@@ -156,13 +144,10 @@ class InternosController extends Controller
      */
     public function edit(Internos $internos, Request $request)
     {
-        $user = \Auth::user();
         $interno = $internos::find($request->id);
 
         return view('internos.edit')->with('data', [
-            'username' => $user->name,
-            'userid' => $user->id,
-            'cargo' => 'Colaborador',
+            'cargo' => $user->nivel,
             'interno' => $interno
         ]);
     }
@@ -175,13 +160,10 @@ class InternosController extends Controller
      */
     public function editall(Internos $internos, Request $request)
     {
-        $user = \Auth::user();
         $interno = $internos::find($request->id);
 
         return view('internos.editall')->with('data', [
-            'username' => $user->name,
-            'userid' => $user->id,
-            'cargo' => 'Colaborador',
+            'cargo' => $user->nivel,
             'interno' => $interno
         ]);
     }
@@ -211,8 +193,7 @@ class InternosController extends Controller
      */
     public function updateall(UpdateInternos $request, Internos $internos)
     {
-        
-        // Salva as alterações do registro.
+
         $internos = Internos::find($request->id)->update($request->all());
 
         return redirect()->route('internos.interno', ['id' => $request->id])

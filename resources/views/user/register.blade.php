@@ -70,7 +70,7 @@
 				      		 ?>
 					      	<div>
 					      		<label for="nivel">Nivel de Acesso</label>
-					      		<?php $disabled = ($data['nivel'] == 1) ? '': 'disabled';?>
+					      		<?php $disabled = ($user->nivel == 1) ? '': 'disabled';?>
 						      	<select id="nivel" name="nivel">
 								  <option {{$none}}    disabled>-- Escolha uma opçao --</option>
 								  <option {{$administrador}} {{$disabled}} value="1" >ADMINISTRADOR</option>

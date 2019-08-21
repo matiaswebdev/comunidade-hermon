@@ -6,7 +6,7 @@
 
 @section('content')
 	<div class="users-home">
-		<h1>Seja bem vindo {{ $data['username']}}.</h1>
+		<h1>Seja bem vindo {{ $user->name }}.</h1>
 		<div class="row">
 				<div class="user-qtd-registros">
 				<div class="icon light-blue"><img src="{{asset('/images/pessoas.svg')}}"></div>

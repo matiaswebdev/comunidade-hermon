@@ -10,9 +10,8 @@ class UsuarioController extends Controller
 {
    
 	 public function dashboard(){
+	 	
 	 	$data = [
-	 		'username' => \Auth::user()->name,
-	 		'cargo' => 'Colaborador',
 	 		'internos_total_registros' => \App\Internos::count(),
 	 		'internos_total_na_comunidade' => \App\Internos::where('data_saida', NULL)->count()
 	 	];
@@ -23,8 +22,6 @@ class UsuarioController extends Controller
 
 	 public function usuarios(Request $request) {
 	 	$data = [
-	 		'username' => \Auth::user()->name,
-	 		'cargo' => 'Colaborador',
 	 		'usuarios' => \App\User::where('name', 'like', '%'.$request['busca'].'%')->paginate(3)
 	 	];
 
@@ -32,13 +29,7 @@ class UsuarioController extends Controller
 	 }
 
 	 public function showRegistrationForm() {
-	 	$user = \Auth::user();
-	 	$data = [
-	 		'username' => $user->name,
-	 		'nivel' => $user->nivel,
-	 		'cargo' => 'Colaborador'
-	 	];
-	 	return view('user.register')->with('data', $data);
+	 	return view('user.register');
 	 }
 
 	 public function store(Request $request) {

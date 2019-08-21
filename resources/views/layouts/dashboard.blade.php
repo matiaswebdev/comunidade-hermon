@@ -28,6 +28,18 @@
 
 
 <body>
+    <!-- Logged User -->
+    <?php 
+        $cargo = '';
+        switch ($user->nivel) {
+            case 1:
+                $cargo = 'Administrador';
+                break;
+            case 2:
+                $cargo = 'Colaborador';
+                break;
+        }
+    ?>
     <!-- Left Menu -->
     <div class="left">
         <section class="menu">
@@ -35,8 +47,8 @@
                 <div class="profile-picture" style="background-image: url({{asset('images/person.png')}}); background-position: center; background-repeat: no-repeat; background-size: cover;">
                 </div>
             </a>
-            <p class="username">{{ $data['username'] }}</p>
-            <p class="cargo">{{ $data['cargo']}}</p>
+            <p class="username">{{ $user->name }}</p>
+            <p class="cargo">{{$cargo}}</p>
             <hr>
 
             <div class="menu-links" id="jq-menulinks">
